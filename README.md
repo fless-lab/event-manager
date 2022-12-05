@@ -1,6 +1,6 @@
 ## About Event Manager
 
-Event Manager es a web application with expressive, elegant and user friendly design.
+Event Manager is a web application with expressive, elegant and user friendly design.
 Throw this app you can manage events.
 
 The user structure is simple

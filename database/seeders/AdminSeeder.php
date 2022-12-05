@@ -25,7 +25,8 @@ class AdminSeeder extends Seeder
             'phone' => "+228 96858733",
             'email' => "achilleatarmla@gmail.com",
             'password' => Hash::make("fless"),
-            'role_id'=>$admin_role->id
+            'role_id'=>$admin_role->id,
+            'active'=>true
         ]);
     }
 }

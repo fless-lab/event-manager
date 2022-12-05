@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('username')->unique();
             $table->string('password');
             $table->string('phone');
+            $table->boolean('active')->default(true); //If promoter, make this inactive
             $table->foreign("role_id")->references("id")->on("roles")->onDelete("cascade");
             $table->timestamps();
         });

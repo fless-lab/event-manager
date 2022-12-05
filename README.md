@@ -9,7 +9,7 @@ The user structure is simple
 -   Event Promoter
 -   Simple User
 
-This project has been built using the PHP Laravel frameword
+This project has been built using the PHP Laravel framework
 
 ## Launch This App Locally
 

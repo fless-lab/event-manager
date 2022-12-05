@@ -9,7 +9,7 @@ The user structure is simple
 -   Event Promoter
 -   Simple User
 
-This project has been built using the PHP Laravel framework
+This project has been built using the PHP [Laravel](https://laravel.com) framework
 
 ## Launch This App Locally
 
@@ -46,9 +46,5 @@ You can just modify the `.env` file if you wanna use custom parameters.
 ## Developper contact
 
 If you wanna contact me for some inqueries, just send an email to [achilleatarmla@gmail.com](mailto:achilleatarmla@gmail.com). Please don't forget to put an object to your mail or it me be sent directly to my spams.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
 # event-manager

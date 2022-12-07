@@ -19,12 +19,12 @@ class AdminSeeder extends Seeder
         $admin_role = Role::where("name","Admin")->first();
 
         $admin = User::create([
-            'firstname' => "Abdou-Raouf",
-            'lastname' => "ATARMLA",
-            'username' => "fless",
-            'phone' => "+228 96858733",
-            'email' => "achilleatarmla@gmail.com",
-            'password' => Hash::make("fless"),
+            'firstname' => "KOMBATE",
+            'lastname' => "Damelan",
+            'username' => "Stef",
+            'phone' => "+228 98984003",
+            'email' => "kombatedamelan@gmail.com",
+            'password' => Hash::make("steph"),
             'role_id'=>$admin_role->id
         ]);
     }

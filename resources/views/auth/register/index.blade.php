@@ -1,27 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <title>Event Manager : Register</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('assets/users/auth/css/styles.css') }}">
-</head>
-
-<body>
-    <div class="background">
-        <div class="shape"></div>
-        <div class="shape"></div>
-    </div>
+@extends('auth.layout.base')
+@section('title', 'Register')
+@section('form-content')
     <form class="register-form" action="{{ route('register') }}" method="POST">
         @csrf
         <h3>SignUp Here</h3>
 
 
         <label for="firstname">Firstname</label>
-        <input type="text" placeholder="Your firstname" name="firstname" value="{{ old('firstname') }}"
-            id="firstname" class="@error('firstname') is-invalid @enderror">
+        <input type="text" placeholder="Your firstname" name="firstname" value="{{ old('firstname') }}" id="firstname"
+            class="@error('firstname') is-invalid @enderror">
         @error('firstname')
             <span class="error-message">{{ $message }}</span>
         @enderror
@@ -33,8 +20,8 @@
             <span class="error-message">{{ $message }}</span>
         @enderror
         <label for="email">Email</label>
-        <input type="text" placeholder="Email adress" name="email" value="{{ old('email') }}" id="email"
-            required class="@error('email') is-invalid @enderror">
+        <input type="text" placeholder="Email adress" name="email" value="{{ old('email') }}" id="email" required
+            class="@error('email') is-invalid @enderror">
         @error('email')
             <span class="error-message">{{ $message }}</span>
         @enderror
@@ -68,6 +55,4 @@
             <div class="fb"><i class="fab fa-facebook"></i> Facebook</div>
         </div>
     </form>
-</body>
-
-</html>
+@endsection

@@ -157,3 +157,13 @@ button {
 .register-form {
     margin-block: 70px;
 }
+
+.is-invalid {
+    border: 1px solid #dc3545;
+}
+
+.error-message {
+    font-size: 10px;
+    font-weight: 300;
+    color: #dc3545;
+}

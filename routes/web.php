@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    dd(Auth::user());
     return view('welcome');
+});
+
+
+Route::group(["middleware" => ["auth"]], function () {
+    
+//  Mettre les routes qui sont protégees par le fait que la personne soit authentifiée
+});
+Route::group(["middleware" => ["verified"]], function () {
+//  Mettre les routes qui sont protégees par le fait que la ai verifié son compte
 });

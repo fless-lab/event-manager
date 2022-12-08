@@ -26,7 +26,7 @@ class AdminSeeder extends Seeder
             'email' => "achilleatarmla@gmail.com",
             'password' => Hash::make("fless"),
             'role_id'=>$admin_role->id,
-            'active'=>true
+            'validated'=>true
         ]);
     }
 }

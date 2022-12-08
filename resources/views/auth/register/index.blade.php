@@ -14,30 +14,48 @@
         <div class="shape"></div>
         <div class="shape"></div>
     </div>
-    <form class="register-form">
+    <form class="register-form" action="{{ route('register') }}" method="POST">
+        @csrf
         <h3>SignUp Here</h3>
 
 
         <label for="firstname">Firstname</label>
-        <input type="text" placeholder="Your firstname" id="firstname">
+        <input type="text" placeholder="Your firstname" name="firstname" value="{{ old('firstname') }}"
+            id="firstname" class="@error('firstname') is-invalid @enderror">
+        @error('firstname')
+            <span class="error-message">{{ $message }}</span>
+        @enderror
 
         <label for="lastname">Lastname</label>
-        <input type="text" placeholder="Your lastname" id="lastname">
-
+        <input type="text" placeholder="Your lastname" name="lastname" value="{{ old('lastname') }}" id="lastname"
+            required class="@error('lastname') is-invalid @enderror">
+        @error('lastname')
+            <span class="error-message">{{ $message }}</span>
+        @enderror
         <label for="email">Email</label>
-        <input type="text" placeholder="Email adress" id="email">
-
+        <input type="text" placeholder="Email adress" name="email" value="{{ old('email') }}" id="email"
+            required class="@error('email') is-invalid @enderror">
+        @error('email')
+            <span class="error-message">{{ $message }}</span>
+        @enderror
         <label for="phone">Phone</label>
-        <input type="tel" placeholder="Phone (Prefix with country code)" id="phone">
-
+        <input type="tel" placeholder="Phone (Prefix with country code)" name="phone" value="{{ old('phone') }}"
+            required id="phone" class="@error('phone') is-invalid @enderror">
+        @error('phone')
+            <span class="error-message">{{ $message }}</span>
+        @enderror
         <label for="password">Password</label>
-        <input type="password" placeholder="Password" id="password">
-
+        <input type="password" placeholder="Password" name="password" id="password" required
+            class="@error('password') is-invalid @enderror">
+        @error('password')
+            <span class="error-message">{{ $message }}</span>
+        @enderror
         <label for="passwordConfirm">Confirm Password</label>
-        <input type="password" placeholder="Confirm your password" id="passwordConfirm">
+        <input type="password" placeholder="Confirm your password" name="password_confirmation" id="passwordConfirm"
+            required>
 
-        <label style="display: inline-flex;position: relative;cursor: pointer;">
-            <input style="height:18px" type="checkbox">
+        <label style="display: inline-flex;position: relative;cursor: pointer;" value="{{ old('promoter') }}">
+            <input style="height:18px" type="checkbox" name="promoter">
             <small style="white-space: nowrap;position: absolute;top:7px;left:2rem;">I am an event promoter.</small>
         </label>
 

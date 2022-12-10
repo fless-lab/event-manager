@@ -36,6 +36,13 @@
     .event-title {
         color: rgb(237, 240, 241);
     }
+
+    .event-details-btn {
+        position: absolute;
+        z-index: 1;
+        top: 15px;
+        right: 0px;
+    }
 </style>
 
 
@@ -57,6 +64,8 @@
     <div class="section-top-border overlay-bg" style="margin-top: -250px">
         <div class="row gallery-item mx-2">
             <div class="col-md-4 event-card">
+                <a href="#" class="genric-btn success circle arrow event-details-btn"
+                    style="width:fit-content;border-radius:50%;padding:.8rem;"><i class="fa-solid fa-arrow-right"></i></a>
                 <a href="{{ asset('assets/users/gen/img/g1.jpg') }}" class="img-pop-up">
                     <div class="single-gallery-image"
                         style="background:linear-gradient(var(--event-card-ovelay-color), var(--event-card-ovelay-color)), url({{ asset('assets/users/gen/img/g1.jpg') }});">
@@ -65,6 +74,8 @@
                 </a>
             </div>
             <div class="col-md-4 event-card">
+                <a href="#" class="genric-btn success circle arrow event-details-btn"
+                    style="width:fit-content;border-radius:50%;padding:.8rem;"><i class="fa-solid fa-arrow-right"></i></a>
                 <a href="{{ asset('assets/users/gen/img/g2.jpg') }}" class="img-pop-up">
                     <div class="single-gallery-image"
                         style="background:linear-gradient(var(--event-card-ovelay-color), var(--event-card-ovelay-color)), url({{ asset('assets/users/gen/img/g2.jpg') }});">
@@ -73,6 +84,8 @@
                 </a>
             </div>
             <div class="col-md-4 event-card">
+                <a href="#" class="genric-btn success circle arrow event-details-btn"
+                    style="width:fit-content;border-radius:50%;padding:.8rem;"><i class="fa-solid fa-arrow-right"></i></a>
                 <a href="{{ asset('assets/users/gen/img/g3.jpg') }}" class="img-pop-up">
                     <div class="single-gallery-image"
                         style="background:linear-gradient(var(--event-card-ovelay-color), var(--event-card-ovelay-color)), url({{ asset('assets/users/gen/img/g3.jpg') }});">
@@ -81,6 +94,8 @@
                 </a>
             </div>
             <div class="col-md-6 event-card">
+                <a href="#" class="genric-btn success circle arrow event-details-btn"
+                    style="width:fit-content;border-radius:50%;padding:.8rem;"><i class="fa-solid fa-arrow-right"></i></a>
                 <a href="{{ asset('assets/users/gen/img/g4.jpg') }}" class="img-pop-up">
                     <div class="single-gallery-image"
                         style="background:linear-gradient(var(--event-card-ovelay-color), var(--event-card-ovelay-color)), url({{ asset('assets/users/gen/img/g4.jpg') }});">
@@ -90,6 +105,8 @@
                 </a>
             </div>
             <div class="col-md-6 event-card">
+                <a href="#" class="genric-btn success circle arrow event-details-btn"
+                    style="width:fit-content;border-radius:50%;padding:.8rem;"><i class="fa-solid fa-arrow-right"></i></a>
                 <a href="{{ asset('assets/users/gen/img/g5.jpg') }}" class="img-pop-up">
                     <div class="single-gallery-image"
                         style="background:linear-gradient(var(--event-card-ovelay-color), var(--event-card-ovelay-color)), url({{ asset('assets/users/gen/img/g5.jpg') }});">
@@ -98,6 +115,8 @@
                 </a>
             </div>
             <div class="col-md-4 event-card">
+                <a href="#" class="genric-btn success circle arrow event-details-btn"
+                    style="width:fit-content;border-radius:50%;padding:.8rem;"><i class="fa-solid fa-arrow-right"></i></a>
                 <a href="{{ asset('assets/users/gen/img/g6.jpg') }}" class="img-pop-up">
                     <div class="single-gallery-image"
                         style="background:linear-gradient(var(--event-card-ovelay-color), var(--event-card-ovelay-color)), url({{ asset('assets/users/gen/img/g6.jpg') }});">
@@ -106,6 +125,8 @@
                 </a>
             </div>
             <div class="col-md-4 event-card">
+                <a href="#" class="genric-btn success circle arrow event-details-btn"
+                    style="width:fit-content;border-radius:50%;padding:.8rem;"><i class="fa-solid fa-arrow-right"></i></a>
                 <a href="{{ asset('assets/users/gen/img/g7.jpg') }}" class="img-pop-up">
                     <div class="single-gallery-image"
                         style="background:linear-gradient(var(--event-card-ovelay-color), var(--event-card-ovelay-color)), url({{ asset('assets/users/gen/img/g7.jpg') }});">
@@ -114,6 +135,8 @@
                 </a>
             </div>
             <div class="col-md-4 event-card">
+                <a href="#" class="genric-btn success circle arrow event-details-btn"
+                    style="width:fit-content;border-radius:50%;padding:.8rem;"><i class="fa-solid fa-arrow-right"></i></a>
                 <a href="{{ asset('assets/users/gen/img/g8.jpg') }}" class="img-pop-up">
                     <div class="single-gallery-image"
                         style="background:linear-gradient(var(--event-card-ovelay-color), var(--event-card-ovelay-color)), url({{ asset('assets/users/gen/img/g8.jpg') }});">

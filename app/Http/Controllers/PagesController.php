@@ -10,8 +10,18 @@ class PagesController extends Controller
         return view("index");
     }
 
+    public function dashboard(){
+        $role = Auth::user()->role;
+        if($role=="Admin"){
+            return redirect()->route("admin.index");
+        }elseif ($role=="Promoter") {
+            return redirect()->route("promoter.index");
+        }else{
+            return redirect()->route("index");
+        }
+    }
 
-    public function event(){
-        
+    public function events(){
+        return view("pages.event.event-list");
     }
 }

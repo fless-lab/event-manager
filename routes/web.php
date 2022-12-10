@@ -17,12 +17,20 @@ use App\Http\Controllers\PagesController;
 
 
 
+Route::get('/', [PagesController::class,"index"])->name("index");
+Route::get('/events', [PagesController::class,"events"])->name("events");
 
 Route::group(["middleware" => ["auth"]], function () {
     
     //  Mettre les routes qui sont protégees par le fait que la personne soit authentifiée
 });
 Route::group(["middleware" => ["verified"]], function () {
-    Route::get('/', [PagesController::class,"index"])->name("index");
 //  Mettre les routes qui sont protégees par le fait que la ai verifié son compte
 });
+
+
+
+
+
+require_once "admin.php";
+require_once "promoter.php";

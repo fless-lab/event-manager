@@ -20,10 +20,11 @@
         border-radius: 0.5rem;
         background-clip: padding-box;
         box-shadow: 0 2px 6px 0 rgba(67, 89, 113, 0.12);
+        transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
     }
 
     .single-gallery-image:hover {
-        font-size: larger;
+        box-shadow: 0 14px 28px rgba(237, 233, 233, 0.25), 0 10px 10px rgba(141, 139, 139, 0.22);
     }
 
 
@@ -52,7 +53,7 @@
         <div class="container">
             <div class="row fullscreen d-flex align-items-center justify-content-center">
                 <div class="banner-content col-lg-9 col-md-12">
-                    <h6>Hey dear visitor</h6>
+                    <h6>Hey dear {{ Auth::user()->firstname ?? 'visitor' }}</h6>
                     <h1 class="text-white">
                         Welcome On R-Event
                     </h1>

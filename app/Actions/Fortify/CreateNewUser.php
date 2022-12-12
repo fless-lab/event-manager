@@ -38,7 +38,7 @@ class CreateNewUser implements CreatesNewUsers
         $promoter = array_key_exists('promoter', $input);
         $role = Role::where("name",$promoter?"Promoter":"User")->first();
 
-        return User::create([
+        $user = User::create([
             'firstname' => $input['firstname'],
             'lastname' => $input['lastname'],
             'username' => Str::lower(Str::random(8)),
@@ -47,5 +47,14 @@ class CreateNewUser implements CreatesNewUsers
             'password' => Hash::make($input['password']),
             'role_id' => $role->id,
         ]);
+
+        // 1- Flasher une alerte disans que le compte a été créé avec succès, checker son mail pour
+        // recuperer son username et verifier son mail
+        // 2- Envoyer un mail à l'utilisateur avec son username
+        // $request->session()->flash('status', "Account created successfully. Now check your inbox to get your unique 'username'");
+        // $request->session()->flash('registration', "To active your account, verify your email address. We've emailed you a link for that");
+
+
+        return $user;
     }
 }

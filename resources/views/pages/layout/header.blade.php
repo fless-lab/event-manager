@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row align-items-center justify-content-between d-flex">
             <div id="logo">
-                <a href="index.html"><img src="{{ asset('assets/users/gen/img/logo.png') }}" alt="Logo"
+                <a href="/"><img src="{{ asset('assets/users/gen/img/logo.png') }}" alt="Logo"
                         title="Logo" /></a>
             </div>
             <nav id="nav-menu-container">
@@ -10,7 +10,9 @@
                     <li class="menu-active"><a href="/">Home</a></li>
                     <li><a href="{{ route('events') }}">Events</a></li>
                     @if (Auth::user())
-                        <li><a href="">Dashboard</a></li>
+                        @if (Auth::user()->role->name != 'User')
+                            <li><a href="">Dashboard</a></li>
+                        @endif
                         <li class="menu-has-children"><a href="javascript:void(0);">Settings</a>
                             <ul>
                                 <li><a href="#!">My Account</a></li>

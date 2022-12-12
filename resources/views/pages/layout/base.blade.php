@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="{{ asset('assets/users/gen/css/animate.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/users/gen/css/owl.carousel.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/users/gen/css/main.css') }} ">
+    <link rel="stylesheet" href="{{ asset('assets/users/auth/css/toastinette.min.css') }}">
+
 </head>
 
 <body>
@@ -49,6 +51,74 @@
     <script src="{{ asset('assets/users/gen/js/parallax.min.js') }} "></script>
     <script src="{{ asset('assets/users/gen/js/mail-script.js') }} "></script>
     <script src="{{ asset('assets/users/gen/js/main.js') }} "></script>
+    <script src="{{ asset('assets/users/auth/js/toastinette.js') }}"></script>
+    <script>
+        @if (session('status'))
+            Toastinette.init({
+                position: 'top-center',
+                title: 'Status',
+                message: "{{ session('status') }}",
+                type: 'success',
+                progress: true,
+                autoClose: 5000
+            });
+        @endif
+
+        @if (session('registration'))
+            Toastinette.init({
+                position: 'top-center',
+                title: 'Active your account',
+                message: "{{ session('registration') }}",
+                type: 'warning',
+                progress: true,
+                autoClose: 10000
+            });
+        @endif
+
+        @if (session('success'))
+            Toastinette.init({
+                position: 'top-center',
+                title: 'Success',
+                message: "{{ session('success') }}",
+                type: 'success',
+                progress: true,
+                autoClose: 5000
+            });
+        @endif
+
+        @if (session('error'))
+            Toastinette.init({
+                position: 'top-center',
+                title: 'Error',
+                message: "{{ session('error') }}",
+                type: 'error',
+                progress: true,
+                autoClose: 5000
+            });
+        @endif
+
+        @if (session('info'))
+            Toastinette.init({
+                position: 'top-center',
+                title: 'Info',
+                message: "{{ session('info') }}",
+                type: 'info',
+                progress: true,
+                autoClose: 5000
+            });
+        @endif
+
+        @if (session('warning'))
+            Toastinette.init({
+                position: 'top-center',
+                title: 'Warning',
+                message: "{{ session('warning') }}",
+                type: 'warning',
+                progress: true,
+                autoClose: 5000
+            });
+        @endif
+    </script>
 </body>
 
 </html>

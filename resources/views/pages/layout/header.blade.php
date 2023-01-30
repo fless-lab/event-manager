@@ -2,8 +2,8 @@
     <div class="container">
         <div class="row align-items-center justify-content-between d-flex">
             <div id="logo">
-                <a href="/"><img src="{{ asset('assets/users/gen/img/logo.png') }}" alt="Logo"
-                        title="Logo" /></a>
+                <a href="/"><img src="{{ asset('assets/users/gen/img/logo.png') }}" alt="Logo" title="Logo"
+                        width="px" /></a>
             </div>
             <nav id="nav-menu-container">
                 <ul class="nav-menu">

@@ -22,11 +22,20 @@
     <link rel="stylesheet" href="{{ asset('assets/users/gen/css/owl.carousel.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/users/gen/css/main.css') }} ">
     <link rel="stylesheet" href="{{ asset('assets/users/auth/css/toastinette.min.css') }}">
-
+    <style>
+        #preloader {
+            background: #000 url("{{ asset('assets/users/gen/img/loader.gif') }}") no-repeat center center;
+            background-size: 15%;
+            height: 100vh;
+            width: 100%;
+            position: fixed;
+            z-index: 1000;
+        }
+    </style>
 </head>
 
 <body>
-
+    @yield('preloader')
     @yield('header')
 
     @yield('main')
@@ -118,6 +127,14 @@
                 autoClose: 5000
             });
         @endif
+    </script>
+
+    <script>
+        var loader = document.getElementById("preloader");
+
+        window.addEventListener("load", function() {
+            loader.style.display = "none";
+        });
     </script>
 </body>
 

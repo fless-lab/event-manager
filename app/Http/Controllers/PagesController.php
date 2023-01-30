@@ -24,4 +24,6 @@ class PagesController extends Controller
     public function events(){
         return view("pages.event.event-list");
     }
+
+    // public function event(Event
 }

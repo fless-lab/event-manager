@@ -7,10 +7,8 @@
             </div>
             <nav id="nav-menu-container">
                 <ul class="nav-menu">
-                    <li class="menu-active"><a href="#home">Home</a></li>
-                    <li><a href="#videos">Videos</a></li>
-                    <li><a href="#speakers">Speakers</a></li>
-                    <li><a href="#schedule">Schedule</a></li>
+                    <li class="menu-active"><a href="/">Home</a></li>
+                    <li class="menu-active"><a href="{{ route('events') }}">Events</a></li>
                     @if (Auth::user())
                         <li><a href="">Dashboard</a></li>
                         <li class="menu-has-children"><a href="javascript:void(0);">Settings</a>
@@ -35,7 +33,6 @@
                     @else
                         <li><a class="ticker-btn" href="{{ route('login') }}">Login</a></li>
                     @endif
-                    <li><a class="ticker-btn" href="#">Buy Ticket</a></li>
                 </ul>
             </nav>
         </div>

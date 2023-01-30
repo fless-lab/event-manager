@@ -1,6 +1,8 @@
 @extends('pages.layout.base')
 @section('title', 'Home')
-
+@section('preloader')
+    @include('pages.layout.preloader')
+@endsection
 @section('header')
     @include('pages.layout.header')
 @endsection
@@ -55,7 +57,7 @@
                 <div class="banner-content col-lg-9 col-md-12">
                     <h6>Hey dear {{ Auth::user()->firstname ?? 'visitor' }}</h6>
                     <h1 class="text-white">
-                        Welcome On R-Event
+                        Welcome On <span style="white-space: nowrap">R-Events</span>
                     </h1>
                     <h3 style="color: white;" class="mt-4">Book your event now and enjoy !!!</h3>
                 </div>

@@ -17,7 +17,7 @@ use App\Http\Controllers\PromotersController;
 
 
 
-    Route::group(["middleware" => ["auth","verified"]], function () {
+    Route::group(["middleware" => ["auth","verified","promoter_dashboard"]], function () {
         Route::get('/dashboard', [PromotersController::class,"index"])->name("promoter.index");
     });
 

@@ -21,12 +21,14 @@ Route::get('/', [PagesController::class,"index"])->name("index");
 Route::get('/events', [PagesController::class,"events"])->name("events");
 
 Route::group(["middleware" => ["auth"]], function () {
-    
     //  Mettre les routes qui sont protégees par le fait que la personne soit authentifiée
 });
 Route::group(["middleware" => ["verified"]], function () {
 //  Mettre les routes qui sont protégees par le fait que la ai verifié son compte
 });
+
+// Route::post("events/categories/{category}")
+// Route::post("events/tags/{category}",)
 
 
 

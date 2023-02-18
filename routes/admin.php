@@ -15,7 +15,7 @@ use App\Http\Controllers\AdminsController;
 */
 
 Route::group(["prefix"=>"admin"], function(){
-    Route::group(["middleware" => ["auth","verified"]], function () {
+    Route::group(["middleware" => ["auth","verified","admin_dashboard"]], function () {
         Route::get('/dashboard', [AdminsController::class,"index"])->name("admin.index");
     });
 });

@@ -11,7 +11,7 @@
                     <li><a href="{{ route('events') }}">Events</a></li>
                     @if (Auth::user())
                         @if (Auth::user()->role->name != 'User')
-                            <li><a href="">Dashboard</a></li>
+                            <li><a href="{{route( (Auth::user()->role->name!='Admin' ? 'promoter':'admin').'.index')}}">Dashboard</a></li>
                         @endif
                         <li class="menu-has-children"><a href="javascript:void(0);">Settings</a>
                             <ul>

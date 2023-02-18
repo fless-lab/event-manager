@@ -1,0 +1,211 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100&family=Poppins:wght@100&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Outfit', sans-serif;
+}
+
+.contain{
+    position: relative;
+}
+.cards{
+    position: relative;
+    bottom: 90px;
+}
+.container{
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("/images/2.jpg");
+    height: 90vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.nav{
+    background: #fff;
+    padding: 10px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    color: #000;
+}
+.nav .logo{
+    font-weight: bolder;
+    font-size: 25px;
+}
+.nav .menu ul{
+    list-style: none;
+}
+.nav .menu ul li{
+    position: relative;
+    float: left;
+}
+.nav .menu ul li a{
+    font-size: 20px;
+    padding: 10px;
+    display: block;
+    color: blue;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+.nav .menu ul li a:hover{
+    background: #000;
+    color: #fff;
+    border-radius: 5px;
+}
+#menu{
+    display: none;
+}
+.nav label{
+    font-size: 25px;
+    cursor: pointer;
+    display: none;
+}
+.text{
+    color: #fff;
+    text-align: center;
+    font-size: 20px;
+    margin-top: 15%;
+}
+.card-1{
+    margin: 10px 20px 0 10px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.card-2{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.card{
+    background: blue;
+    width: 410px;
+    height: 250px;
+    margin: 10px;
+    border-radius: 15px;
+    background-color: aqua;
+    height: 250px;
+    background-position: center;
+    background-size: cover;
+    border-radius: 15px;
+}
+.card h2{
+    padding: 20px 10px 0px 20px;
+    color: #fff;
+}
+.card p{
+    padding: 20px 10px 0px 20px;
+    color: #fff;
+}
+.card a{
+    color: #000;
+    padding: 15px 20px;
+    margin: 20px 50px;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.card a:hover{
+    background-color: #fff;
+}
+.cardt{
+    background: blue;
+    width: 620px;
+    height: 250px;
+    margin: 10px;
+    border-radius: 15px;
+    background-color: aqua;
+    height: 250px;
+    background-position: center;
+    background-size: cover;
+    border-radius: 15px;
+}
+.cardt h2{
+    padding: 20px 10px 0px 20px;
+    color: #fff;
+}
+.cardt p{
+    padding: 20px 10px 0px 20px;
+    color: #fff;
+}
+.cardt a{
+    color: #000;
+    padding: 15px 20px;
+    margin: 20px 50px;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.cardt a:hover{
+    background-color: #fff;
+}
+.car-01{
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.4)),  url("/images/1.jpg");
+}
+.car-02{
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.4)),  url("/images/3.jpg");
+}
+.car-03{
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.4)),  url("/images/4.jpg");
+}
+.bth{
+    text-align: center;
+    height: 50px;
+    width: 100px;
+    background: blue;
+    border-radius: 5px;
+}
+footer{
+    background: black;
+    height: 400px;
+    margin-top: 10px;
+}
+@media screen and (max-width:991px) {
+    .nav{
+        padding: 20px;
+    }
+    .nav label{
+        display: initial;
+    }
+    .nav .menu{
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background: #fff;
+        border-top: 1px solid #000;
+        display: none;
+    }
+    .nav .menu ul li a:hover{
+        background-color: #000;
+        cursor: pointer;
+    }
+    .nav .menu ul li{
+        width: 100%;
+    }
+    #menu:checked ~ .menu{
+        display: initial;
+    } 
+
+    .cards .bloc1{
+        flex-wrap: wrap;
+    }
+    .cards .bloc2{
+        flex-wrap: wrap;
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
+    .cards .bloc3{
+        flex-wrap: wrap;
+    }
+    .cardt{
+        width: 410px;
+        
+    }
+
+    
+}

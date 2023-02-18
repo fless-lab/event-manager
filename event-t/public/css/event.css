@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100&family=Poppins:wght@100&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Outfit', sans-serif;
+    background: rgb(27, 27, 27);
+}
+.nav{
+    background: rgb(62, 62, 62);
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: #fff;
+}
+.nav .logo{
+    font-weight: 5000;
+}
+.nav .recherche{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.nav .recherche input[type="text"]{
+    height: 40px;
+    width: 500px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    background: rgba(0, 0, 0, 0.4);
+    color: #fff;
+    margin: 10px;
+}
+.nav .recherche input::placeholder{
+    padding: 10px;
+}
+.nav .recherche button{
+    background: blue;
+    height: 30px;
+    border: none;
+    border-radius: 30px;
+    width: 100px;
+    color: #fff;
+}
+.container{
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.card{
+    background: #fff;
+    width: 300px;
+    height: 400px;
+    margin: 10px;
+    border-radius: 15px;
+}
+.card h2{
+    padding: 10px;
+}
+.card p{
+    padding: 10px;
+}
+.card a{
+    background-color: black;
+    color: #fff;
+    padding: 15px 20px;
+    margin: 20px 50px;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+}
+.card-img{
+    background-color: aqua;
+    height: 200px;
+    margin-bottom: 15px;
+    background-position: center;
+    background-size: cover;
+    border-radius: 15px 15px 0 0;
+   
+}
+.car-01{
+    background-image:  url("/images/1.jpg");
+}
+.car-02{
+    background-image:  url("/images/3.jpg");
+}
+.car-03{
+    background-image:  url("/images/4.jpg");
+}
+.car-04{
+    background-image:  url("/images/5.jpg");
+}
+.card:hover{
+    background: rgb(62, 62, 62);
+    color: #fff;
+    cursor: pointer;
+}
+footer{
+    background: black;
+    height: 400px;
+    margin-top: 10px;
+}
+@media screen and (max-width:500px) {
+    .nav{
+        display: block;
+    }
+    .nav .recherche button{
+        display: none;
+    }
+    
+}

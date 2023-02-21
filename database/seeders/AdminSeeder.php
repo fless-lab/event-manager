@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Carbon\Carbon;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -26,7 +27,8 @@ class AdminSeeder extends Seeder
             'email' => "achilleatarmla@gmail.com",
             'password' => Hash::make("fless"),
             'role_id'=>$admin_role->id,
-            'validated'=>true
+            'validated'=>true,
+            "email_verified_at"=>Carbon::now()
         ]);
     }
 }

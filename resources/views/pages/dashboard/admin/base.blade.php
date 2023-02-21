@@ -130,6 +130,7 @@ nav{
                 <h4>R-Events</h4>
               </div>
               <ul class="sidebar-links">
+                <li><a class="{{ Request::routeIs('admin.index') ? 'active' : '' }}" href="{{route("admin.index")}}">Dashboard</a></li>
                 <li><a class="{{ Request::routeIs('admin.users.*') ? 'active' : '' }}" href="{{route("admin.users.index")}}">Users</a></li>
                 <li><a class="{{ Request::routeIs('admin.events.*') ? 'active' : '' }}" href="{{route("admin.events.index")}}">Events</a></li>
                 <li><a class="{{ Request::routeIs('admin.events.categories.*') ? 'active' : '' }}" href="{{route("admin.events.categories.index")}}">Event Categories</a></li>

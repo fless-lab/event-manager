@@ -4,6 +4,25 @@
     @include('pages.layout.event-header')
 @endsection
 
+<style>
+    .card {
+        margin: 5% 0%;
+    }
+
+    .card-body {
+        margin: 0% 0% 0% 3%;
+        padding: 6% 0%;
+    }
+    .description {
+    max-height: 4.5em;
+    line-height: 1.5em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+}
+</style>
 
 @section('main')
     <section style="min-height: 60vh">
@@ -12,76 +31,238 @@
                 <div class="row d-flex justify-content-center">
                     <div>
                         <div class="title text-center">
-                            <h1 class="mb-10">Check our event list to find your enjoy</h1>
-                            <p>You can use search fields to filtrer your request.</p>
+                            <h1 class="mb-10">Consultez notre liste d'événements</h1>
+                            <p>Vous pouvez utiliser les champs de recherche pour filtrer votre demande.</p>
+                            <p>
+                            <div class="input-group mb-3 px-3">
+                                <input type="text" class="form-control" placeholder="Rechercher ......"
+                                    aria-label="Nom de l'evenement">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fa fa-search"></i></span>
+                                </div>
+                            </div>
+
+                            </p>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="table-wrap col-lg-12">
-                        <table class="schdule-table table table-bordered">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th class="head" scope="col">sl</th>
-                                    <th class="head" scope="col">session</th>
-                                    <th class="head" scope="col">speaker</th>
-                                    <th class="head" scope="col">vanue</th>
-                                    <th class="head" scope="col">time</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th class="name" scope="row">01</th>
-                                    <td>Reception &amp; Taling Seats</td>
-                                    <td>Isabelle Cooper</td>
-                                    <td>3rd Hall Room</td>
-                                    <td>02.00</td>
-                                </tr>
-                                <tr>
-                                    <th class="name" scope="row">02</th>
-                                    <td>Breakfast and rest</td>
-                                    <td>N/A</td>
-                                    <td>4th Hall Room</td>
-                                    <td>02.00</td>
-                                </tr>
-                                <tr>
-                                    <th class="name" scope="row">03</th>
-                                    <td>Reception &amp; Taling Seats</td>
-                                    <td>Jane Daniel</td>
-                                    <td>2nd Hall Room</td>
-                                    <td>02.00</td>
-                                </tr>
-                                <tr>
-                                    <th class="name" scope="row">04</th>
-                                    <td>Next generation speech</td>
-                                    <td>Billy Barton</td>
-                                    <td>1st Hall Room</td>
-                                    <td>02.00</td>
-                                </tr>
-                                <tr>
-                                    <th class="name" scope="row">05</th>
-                                    <td>Sppech for young people</td>
-                                    <td>Flora Gonzales</td>
-                                    <td>4rd Hall Room</td>
-                                    <td>02.00</td>
-                                </tr>
-                                <tr>
-                                    <th class="name" scope="row">06</th>
-                                    <td>Lunch Break</td>
-                                    <td>N/A</td>
-                                    <td>3rd Hall Room</td>
-                                    <td>02.00</td>
-                                </tr>
-                                <tr>
-                                    <th class="name" scope="row">07</th>
-                                    <td>Sppech for Middle aged people</td>
-                                    <td>Francisco Barrett</td>
-                                    <td>1st Hall Room</td>
-                                    <td>02.00</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                <div class="container">
+
+
+                    <div class="card-deck row">
+
+                        <div class="col-xs-12 col-sm-6 col-md-4">
+
+                            <div class="card">
+
+
+                                <div class="view ">
+                                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/16.jpg"
+                                        alt="Card image cap">
+                                    <a href="#!">
+                                        <div class="mask rgba-white-slight"></div>
+                                    </a>
+                                </div>
+
+
+                                <div class="card-body">
+
+
+                                    <h4 class="card-title">1 Card title</h4>
+
+                                    <p class="card-text description">Some quick example text to build on the card title and make up the
+                                        bulk of the card's content.</p>
+
+                                    <button type="button" class="btn btn-light-blue btn-md">Reserver</button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 col-md-4">
+
+                            <div class="card mb-4">
+
+
+                                <div class="view ">
+                                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/14.jpg"
+                                        alt="Card image cap">
+                                    <a href="#!">
+                                        <div class="mask rgba-white-slight"></div>
+                                    </a>
+                                </div>
+
+
+                                <div class="card-body">
+
+
+                                    <h4 class="card-title">2 Card title</h4>
+
+                                    <p class="card-text description">Some quick example text to build on the card title and make up the
+                                        bulk of the card's content.</p>
+
+                                    <button type="button" class="btn btn-light-blue btn-md">Reserver</button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 col-md-4">
+
+                            <div class="card mb-4">
+
+
+                                <div class="view ">
+                                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/15.jpg"
+                                        alt="Card image cap">
+                                    <a href="#!">
+                                        <div class="mask rgba-white-slight"></div>
+                                    </a>
+                                </div>
+
+
+                                <div class="card-body">
+
+
+                                    <h4 class="card-title">3 Card title</h4>
+
+                                    <p class="card-text description">Some quick example text to build on the card title and make up the
+                                        bulk of the card's content.</p>
+
+                                    <button type="button" class="btn btn-light-blue btn-md">Reserver</button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 col-md-4">
+
+                            <div class="card">
+
+
+                                <div class="view ">
+                                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/16.jpg"
+                                        alt="Card image cap">
+                                    <a href="#!">
+                                        <div class="mask rgba-white-slight"></div>
+                                    </a>
+                                </div>
+                                <div class="card-body">
+
+
+                                    <h4 class="card-title">4 Card title</h4>
+
+                                    <p class="card-text description">Some quick example text to build on the card title and make up the
+                                        bulk of the card's content.</p>
+
+                                    <button type="button" class="btn btn-light-blue btn-md">Reserver</button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 col-md-4">
+
+                            <div class="card mb-4">
+
+
+                                <div class="view ">
+                                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/14.jpg"
+                                        alt="Card image cap">
+                                    <a href="#!">
+                                        <div class="mask rgba-white-slight"></div>
+                                    </a>
+                                </div>
+
+
+                                <div class="card-body">
+
+
+                                    <h4 class="card-title">5 Card title</h4>
+
+                                    <p class="card-text description">Some quick example text to build on the card title and make up the
+                                        bulk of the card's content.</p>
+
+                                    <button type="button" class="btn btn-light-blue btn-md">Reserver</button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 col-md-4">
+
+                            <div class="card mb-4">
+
+
+                                <div class="view ">
+                                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/15.jpg"
+                                        alt="Card image cap">
+                                    <a href="#!">
+                                        <div class="mask rgba-white-slight"></div>
+                                    </a>
+                                </div>
+
+
+                                <div class="card-body">
+
+
+                                    <h4 class="card-title">6 Card title</h4>
+
+                                    <p class="card-text description">Some quick example text to build on the card title and make up the
+                                        bulk of the card's content.</p>
+
+                                    <button type="button" class="btn btn-light-blue btn-md">Reserver</button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 col-md-4">
+
+                            <div class="card mb-4">
+
+
+                                <div class="view ">
+                                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/15.jpg"
+                                        alt="Card image cap">
+                                    <a href="#!">
+                                        <div class="mask rgba-white-slight"></div>
+                                    </a>
+                                </div>
+
+
+                                <div class="card-body">
+
+
+                                    <h4 class="card-title">7 Card title</h4>
+
+                                    <p class="card-text description">Some quick example text to build on the card title and make up the
+                                        bulk of the card's content.</p>
+
+                                    <button type="button" class="btn btn-light-blue btn-md">Reserver</button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
                     </div>
+
+
                 </div>
             </div>
         </section>

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\PagesController;
 
 /*
@@ -25,6 +26,10 @@ Route::group(["middleware" => ["auth"]], function () {
 });
 Route::group(["middleware" => ["verified"]], function () {
 //  Mettre les routes qui sont protégees par le fait que la ai verifié son compte
+});
+
+Route::group(["middleware" => ["auth","verified"]], function () {
+    Route::get('/events/{event}', [EventController::class,"show"])->name("events.show");
 });
 
 // Route::post("events/categories/{category}")

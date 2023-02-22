@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -23,7 +24,8 @@ class PagesController extends Controller
     }
 
     public function events(){
-        return view("pages.event.event-list");
+        $events = Event::where("status","validated")->get();
+        return view("pages.event.event-list",["events"=>$events]);
     }
 
     // public function event(Event

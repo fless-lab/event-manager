@@ -28,8 +28,7 @@ Route::group(["prefix"=>"admin"], function(){
         Route::get('/events', [AdminsController::class,"eventsIndex"])->name("admin.events.index");
         Route::get('/events/{event}', [AdminsController::class,"eventsShow"])->name("admin.events.show");
         Route::post('/events', [AdminsController::class,"eventsStore"])->name("admin.events.store");
-        Route::put('/events/{event}/validate', [AdminsController::class,"eventsIndex"])->name("admin.events.validate");
-        Route::put('/events/{event}/reject', [AdminsController::class,"eventsIndex"])->name("admin.events.reject");
+        Route::put('/events/{event}/evaluate', [AdminsController::class,"eventsEvaluate"])->name("admin.events.evaluate");
         Route::put('/events/{event}', [AdminsController::class,"eventsUpdate"])->name("admin.events.update");
         Route::delete('/events/{event}', [AdminsController::class,"eventsDelete"])->name("admin.events.delete");
 

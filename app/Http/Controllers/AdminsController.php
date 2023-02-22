@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Role;
 use App\Models\User;
 use App\Models\Event;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\EventCategory;
 use Illuminate\Support\Facades\Hash;
@@ -77,11 +79,70 @@ class AdminsController extends Controller
     // Event management functions
     public function eventsIndex(){
         $events = Event::all();
-        return view("pages.dashboard.admin.manage-events",["events"=>$events]);
+        $promoters = User::where("role_id",2)->get();
+        $categories = EventCategory::all();
+        return view("pages.dashboard.admin.manage-events",["events"=>$events,"promoters"=>$promoters,'categories'=>$categories]);
     }
 
     public function eventsShow(Event $event){
 
+    }
+
+    public function eventsStore(Request $request){
+        // dd($request);
+        $event = Event::create([
+            "title"=>$request->title,
+            "description"=>$request->description,
+            "place"=>$request->place,
+            "category_id"=>$request->category_id,
+            "promoter_id"=>$request->promoter_id,
+            "status"=>$request->status,
+            "title"=>$request->title,
+            "start_date"=>$request->start_date."T".$request->start_time,
+            "end_date"=>$request->end_date."T".$request->end_time,
+        ]);
+
+        if($request->cover){
+            $coverNewName = "event-cover-".Str::uuid().".".$request->cover->extension();
+            $request->cover->move(public_path("images/uploads/events/covers"),$coverNewName);
+            $event->update(["cover"=>$coverNewName]);
+        }
+
+        return back()->with("success","Evenement enregistré avec succès !");
+    }
+
+    public function eventsUpdate(Request $request,Event $event){
+        $event->update([
+            "title"=>$request->title??$event->title,
+            "description"=>$request->description??$event->description,
+            "place"=>$request->place??$event->place,
+            "category_id"=>$request->category_id??$event->category_id,
+            "promoter_id"=>$request->promoter_id??$event->promoter_id,
+            "status"=>$request->status??$event->status,
+            "title"=>$request->title??$event->title,
+            "start_date"=>$request->start_date."T".$request->start_time??$event->start_date,
+            "end_date"=>$request->end_date."T".$request->end_time??$event->end_date,
+        ]);
+
+        if($request->cover){
+            $updatedCoverNewName = "event-cover-".Str::uuid().".".$request->cover->extension();
+            $request->cover->move(public_path("images/uploads/events/covers"),$updatedCoverNewName);
+            $event->update(["cover"=>$updatedCoverNewName]);
+        }
+
+        return back()->with("success","Evenement enregistré avec succès !");
+    }
+    public function eventsDelete(Event $event){
+        $event->delete();
+        return redirect()->back()->with("success","Evenement supprimée avec succès !");
+    }
+
+    public function eventsEvaluate(Request $request,Event $event){
+        $event->update([
+            "status"=>$request->status
+        ]);
+
+        return back()->with("success","Votre évalution a été prise en compte !");
     }
 
 

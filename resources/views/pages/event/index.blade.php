@@ -4,7 +4,13 @@
 @section('header')
     @include('pages.layout.header')
 @endsection
-
+<style>
+.banner-area {
+    background: url({{$event->cover}}) center !important;
+    background-repeat: no-repeat!important;
+    background-size: cover!important;
+}
+</style>
 @section('main')
     <section class="banner-area relative" id="home">
         <div class="overlay overlay-bg"></div>
@@ -13,71 +19,59 @@
                 <div class="banner-content col-lg-9 col-md-12">
                     <h6></h6>
                     <h1 class="text-white">
-                        Welcome On R-Event
+                        {{$event->title}}
                     </h1>
                     <div class="countdown">
                         <div id="timer" class="text-white"></div>
                     </div>
-                    <h4><i class="fa-solid fa-calendar"></i> 05th - 09th March, 2021</h4>
-                    <h4><i class="fa-solid fa-map"></i> 56/8, Dhanmondi, Dhaka - 1205</h4>
+                    <h4><i class="fa-solid fa-calendar"></i>{{$event->start_date}} - {{$event->start_date}}</h4>
+                    <h4><i class="fa-solid fa-map"></i> {{$event->place}}</h4>
+
+                    <button class="btn btn-success btn-lg text-white my-5">Reserver une place</button>
                 </div>
             </div>
         </div>
     </section>
-    <div class="section-top-border">
-        <div class="row gallery-item">
-            <div class="col-md-4">
-                <a href="{{ asset('assets/users/gen/img/g1.jpg') }}" class="img-pop-up">
-                    <div class="single-gallery-image" style="background: url({{ asset('assets/users/gen/img/g1.jpg') }});">
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4">
-                <a href="{{ asset('assets/users/gen/img/g2.jpg') }}" class="img-pop-up">
-                    <div class="single-gallery-image" style="background: url({{ asset('assets/users/gen/img/g2.jpg') }});">
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4">
-                <a href="{{ asset('assets/users/gen/img/g3.jpg') }}" class="img-pop-up">
-                    <div class="single-gallery-image" style="background: url({{ asset('assets/users/gen/img/g3.jpg') }});">
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-6">
-                <a href="{{ asset('assets/users/gen/img/g4.jpg') }}" class="img-pop-up">
-                    <div class="single-gallery-image" style="background: url({{ asset('assets/users/gen/img/g4.jpg') }});">
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-6">
-                <a href="{{ asset('assets/users/gen/img/g5.jpg') }}" class="img-pop-up">
-                    <div class="single-gallery-image" style="background: url({{ asset('assets/users/gen/img/g5.jpg') }});">
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4">
-                <a href="{{ asset('assets/users/gen/img/g6.jpg') }}" class="img-pop-up">
-                    <div class="single-gallery-image" style="background: url({{ asset('assets/users/gen/img/g6.jpg') }});">
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4">
-                <a href="{{ asset('assets/users/gen/img/g7.jpg') }}" class="img-pop-up">
-                    <div class="single-gallery-image" style="background: url({{ asset('assets/users/gen/img/g7.jpg') }});">
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4">
-                <a href="{{ asset('assets/users/gen/img/g8.jpg') }}" class="img-pop-up">
-                    <div class="single-gallery-image" style="background: url({{ asset('assets/users/gen/img/g8.jpg') }});">
-                    </div>
-                </a>
-            </div>
-        </div>
+    <div class="text-center section-top-border">
+        <h1 class="text-center" style="text-decoration: underline">Events details here</h1>
+        <p>Promoted by : <b style="color:green">{{$event->promoter->lastname}}&nbsp;{{$event->promoter->firstname}}</b></p>
+        <br><br>
+        <p style="text-align: start" class="container">
+            {{$event->description}}
+        </p>
     </div>
 @endsection
 
+{{-- <script>
+    // Set the date we're counting down to
+    var countDownDate = new Date("March 5, 2023 15:37:25").getTime();
+
+    // Update the count down every 1 second
+    var x = setInterval(function() {
+
+        // Get todays date and time
+        var now = new Date().getTime();
+
+        // Find the distance between now an the count down date
+        var distance = countDownDate - now;
+
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Output the result in an element with id="demo"
+        document.getElementById("timer").innerHTML ="<div class='start-in'>Débute dans :</div>"+ days + "<span>jours  </span>: " + hours + "<span>heures</span>: "
+        + minutes + "<span>mins  </span>: " + seconds + "<span>secs  </span>";
+
+        // If the count down is over, write some text
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("timer").innerHTML = "EXPIRE";
+        }
+    }, 1000);
+</script> --}}
 
 
 @section('footer')

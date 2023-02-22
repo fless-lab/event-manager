@@ -1,7 +1,8 @@
 @extends('pages.layout.base')
 @section('title', 'Events')
 @section('header')
-    @include('pages.layout.event-header')
+    @section('bgColor', 'bg-dark')
+    @include('pages.layout.header')
 @endsection
 
 <style>
@@ -21,6 +22,21 @@
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
+}
+
+.card img{
+    height: 270px;
+    object-fit: cover;
+    object-position: center;
+}
+.card-title:hover{
+    color: rgb(9, 85, 125);
+}
+
+.event-bagde{
+    position: absolute;
+    width: fit-content!important;
+    left: -10px;
 }
 </style>
 
@@ -51,14 +67,15 @@
 
                     <div class="card-deck row">
 
+                        @foreach ($events as $event)
                         <div class="col-xs-12 col-sm-6 col-md-4">
-
-                            <div class="card">
-
-
+                            <div class="card h-100">
+                                {{-- <span class="badge badge-success event-badge">Dans 3 jours</span> --}}
                                 <div class="view ">
-                                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/16.jpg"
+                                    <a href="{{route("events.show",$event)}}">
+                                        <img class="card-img-top" src="{{$event->cover}}"
                                         alt="Card image cap">
+                                    </a>
                                     <a href="#!">
                                         <div class="mask rgba-white-slight"></div>
                                     </a>
@@ -68,40 +85,11 @@
                                 <div class="card-body">
 
 
-                                    <h4 class="card-title">1 Card title</h4>
-
-                                    <p class="card-text description">Some quick example text to build on the card title and make up the
-                                        bulk of the card's content.</p>
-
-                                    <button type="button" class="btn btn-light-blue btn-md">Reserver</button>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="col-xs-12 col-sm-6 col-md-4">
-
-                            <div class="card mb-4">
-
-
-                                <div class="view ">
-                                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/14.jpg"
-                                        alt="Card image cap">
-                                    <a href="#!">
-                                        <div class="mask rgba-white-slight"></div>
+                                    <a href="{{route("events.show",$event)}}">
+                                        <h4 class="card-title">{{$event->title}}</h4>
                                     </a>
-                                </div>
 
-
-                                <div class="card-body">
-
-
-                                    <h4 class="card-title">2 Card title</h4>
-
-                                    <p class="card-text description">Some quick example text to build on the card title and make up the
-                                        bulk of the card's content.</p>
+                                    <p class="card-text description">{{$event->description}}</p>
 
                                     <button type="button" class="btn btn-light-blue btn-md">Reserver</button>
 
@@ -110,154 +98,7 @@
                             </div>
 
                         </div>
-
-                        <div class="col-xs-12 col-sm-6 col-md-4">
-
-                            <div class="card mb-4">
-
-
-                                <div class="view ">
-                                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/15.jpg"
-                                        alt="Card image cap">
-                                    <a href="#!">
-                                        <div class="mask rgba-white-slight"></div>
-                                    </a>
-                                </div>
-
-
-                                <div class="card-body">
-
-
-                                    <h4 class="card-title">3 Card title</h4>
-
-                                    <p class="card-text description">Some quick example text to build on the card title and make up the
-                                        bulk of the card's content.</p>
-
-                                    <button type="button" class="btn btn-light-blue btn-md">Reserver</button>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="col-xs-12 col-sm-6 col-md-4">
-
-                            <div class="card">
-
-
-                                <div class="view ">
-                                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/16.jpg"
-                                        alt="Card image cap">
-                                    <a href="#!">
-                                        <div class="mask rgba-white-slight"></div>
-                                    </a>
-                                </div>
-                                <div class="card-body">
-
-
-                                    <h4 class="card-title">4 Card title</h4>
-
-                                    <p class="card-text description">Some quick example text to build on the card title and make up the
-                                        bulk of the card's content.</p>
-
-                                    <button type="button" class="btn btn-light-blue btn-md">Reserver</button>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="col-xs-12 col-sm-6 col-md-4">
-
-                            <div class="card mb-4">
-
-
-                                <div class="view ">
-                                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/14.jpg"
-                                        alt="Card image cap">
-                                    <a href="#!">
-                                        <div class="mask rgba-white-slight"></div>
-                                    </a>
-                                </div>
-
-
-                                <div class="card-body">
-
-
-                                    <h4 class="card-title">5 Card title</h4>
-
-                                    <p class="card-text description">Some quick example text to build on the card title and make up the
-                                        bulk of the card's content.</p>
-
-                                    <button type="button" class="btn btn-light-blue btn-md">Reserver</button>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="col-xs-12 col-sm-6 col-md-4">
-
-                            <div class="card mb-4">
-
-
-                                <div class="view ">
-                                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/15.jpg"
-                                        alt="Card image cap">
-                                    <a href="#!">
-                                        <div class="mask rgba-white-slight"></div>
-                                    </a>
-                                </div>
-
-
-                                <div class="card-body">
-
-
-                                    <h4 class="card-title">6 Card title</h4>
-
-                                    <p class="card-text description">Some quick example text to build on the card title and make up the
-                                        bulk of the card's content.</p>
-
-                                    <button type="button" class="btn btn-light-blue btn-md">Reserver</button>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="col-xs-12 col-sm-6 col-md-4">
-
-                            <div class="card mb-4">
-
-
-                                <div class="view ">
-                                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/15.jpg"
-                                        alt="Card image cap">
-                                    <a href="#!">
-                                        <div class="mask rgba-white-slight"></div>
-                                    </a>
-                                </div>
-
-
-                                <div class="card-body">
-
-
-                                    <h4 class="card-title">7 Card title</h4>
-
-                                    <p class="card-text description">Some quick example text to build on the card title and make up the
-                                        bulk of the card's content.</p>
-
-                                    <button type="button" class="btn btn-light-blue btn-md">Reserver</button>
-
-                                </div>
-
-                            </div>
-
-                        </div>
+                        @endforeach
 
 
                     </div>

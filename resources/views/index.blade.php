@@ -66,6 +66,19 @@
     </section>
     <div class="section-top-border overlay-bg" style="margin-top: -250px">
         <div class="row gallery-item mx-2">
+            {{-- @foreach ($events as $event) --}}
+
+            {{-- <div class="col-md-4 event-card">
+                <a href="#" class="genric-btn success circle arrow event-details-btn"
+                    style="width:fit-content;border-radius:50%;padding:.8rem;"><i class="fa-solid fa-arrow-right"></i></a>
+                <a href="{{ asset('assets/users/gen/img/g1.jpg') }}" class="img-pop-up">
+                    <div class="single-gallery-image"
+                        style="background:linear-gradient(var(--event-card-ovelay-color), var(--event-card-ovelay-color)), url({{ asset('assets/users/gen/img/g1.jpg') }});">
+                        <h2 class="event-title">Event Title Appears</h2>
+                    </div>
+                </a>
+            </div>
+            @endforeach --}}
             <div class="col-md-4 event-card">
                 <a href="#" class="genric-btn success circle arrow event-details-btn"
                     style="width:fit-content;border-radius:50%;padding:.8rem;"><i class="fa-solid fa-arrow-right"></i></a>

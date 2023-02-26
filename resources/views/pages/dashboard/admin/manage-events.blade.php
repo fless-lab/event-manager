@@ -64,50 +64,6 @@
                                 </td>
                             </tr>
 
-                            <div class="modal fade" id="evaluateEventModal{{ $event->id }}" tabindex="-1" role="dialog"
-                                aria-labelledby="updateEventLabel{{ $event->id }}" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Evaluer l'evenement <b>{{ $event->title }} (By
-                                                    {{ $event->promoter->lastname }} {{ $event->promoter->lastname }})</b>
-                                            </h5>
-                                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">×</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form class="event" method="POST" id="add_event_form"
-                                                action="{{ route('admin.events.evaluate', $event) }}"
-                                                enctype="multipart/form-data">
-                                                @csrf
-                                                @method("put")
-                                                <div class="form-group row mb-2" style="margin-top: 20px">
-                                                    <div class="col-sm-12 mb-3 mb-sm-0">
-                                                        <select name="status" id="status">
-                                                            <option disabled value>Selectionnez une option</option>
-                                                            <option value="validated" @if ($event->status=="validated")
-selected
-                                                            @endif>Valider</option>
-                                                            <option value="pending" @if ($event->status=="pending")
-selected
-                                                            @endif>En cours</option>
-                                                            <option value="rejected" @if ($event->status=="rejected")
-selected
-                                                            @endif>Rejeter</option>
-                                                        </select>
-                                                    </div>
-                                        <div class="modal-footer">
-                                            <a class="btn btn-secondary" href="#!" type="button"
-                                                data-dismiss="modal">Annuler</a>
-                                            <button class="btn btn-success" type="submit">Mettre à
-                                                jour</button>
-                                        </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-
                             <div class="modal fade" id="updateEventModal{{ $event->id }}" tabindex="-1" role="dialog"
                                 aria-labelledby="updateEventLabel{{ $event->id }}" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
@@ -115,18 +71,19 @@ selected
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="exampleModalLabel">Mettre à
                                                 jour l'evenement <b>{{ $event->title }} (By
-                                                    {{ $event->promoter->lastname }} {{ $event->promoter->lastname }})</b>
+                                                    {{ $event->promoter->lastname }}
+                                                    {{ $event->promoter->lastname }})</b>
                                             </h5>
                                             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">×</span>
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <form class="event" method="POST" id="add_event_form"
+                                            <form class="event" method="POST" id="update_event_form"
                                                 action="{{ route('admin.events.update', $event) }}"
                                                 enctype="multipart/form-data">
                                                 @csrf
-                                                @method("put")
+                                                @method('put')
                                                 <div class="form-group row mb-2" style="margin-top: 20px">
                                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                                         <input type="text" class="form-control form-control-user"
@@ -134,7 +91,7 @@ selected
                                                             value="{{ $event->title }}">
                                                     </div>
                                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                                        <select name="category_id" id="category_id">
+                                                        <select class="form-control" name="category_id" id="category_id">
                                                             <option disabled value>Selectionnez une categorie</option>
                                                             @foreach ($categories as $category)
                                                                 <option value="{{ $category->id }}"
@@ -146,18 +103,18 @@ selected
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-12 mb-3 mb-sm-0" style="margin-top: 20px">
-                                                    <textarea class="form-control form-control-user" name="description" id="description" cols="30" rows="10">{{ $event->description }}
-                                </textarea>
+                                                    <textarea class="form-control form-control-user" name="description" id="description" cols="30" rows="10">{{ $event->description }}</textarea>
                                                 </div>
                                                 <div class="form-group row mb-2" style="margin-top: 20px">
                                                     <div class="col-sm-6">
                                                         <input type="place" class="form-control form-control-user"
-                                                            id="place" name="place" placeholder="Lieux de l'evenement"
+                                                            id="place" name="place"
+                                                            placeholder="Lieux de l'evenement"
                                                             value="{{ $event->place }}">
                                                     </div>
                                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                                        <input type="file" class="form-control form-control-user"
-                                                            id="cover" name="cover"
+                                                        <input type="file" class="form-control" id="cover"
+                                                            name="cover"
                                                             placeholder="Photo de couverture de l'evenement"
                                                             value="{{ $event->cover }}">
                                                     </div>
@@ -168,58 +125,109 @@ selected
                                                         <input type="date" class="form-control form-control-user"
                                                             placeholder="Date & heure de début de l'evenement"
                                                             name="start_date" id="start_date"
-                                                            value="{{ $event->start_date }}">
+                                                            value="{{ date('d/m/Y', $event->start_date) }}">
                                                         <input type="time" class="form-control form-control-user"
                                                             placeholder="Date & heure de début de l'evenement"
                                                             name="start_time" id="start_time"
-                                                            value="{{ $event->start_date }}">
+                                                            value="{{ date('h:i', $event->start_date) }}">
                                                     </div>
                                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                                         <input type="date" class="form-control form-control-user"
                                                             placeholder="Date & heure de début de l'evenement"
                                                             name="end_date" id="end_date"
-                                                            value="{{ $event->end_date }}">
+                                                            value="{{ date('d/m/Y', $event->end_date) }}">
                                                         <input type="time" class="form-control form-control-user"
                                                             placeholder="Date & heure de début de l'evenement"
                                                             name="end_time" id="end_time"
-                                                            value="{{ $event->end_date }}">
+                                                            value="{{ date('h:i', $event->end_date) }}">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
                                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                                        <select name="status" id="status">
+                                                        <select class="form-control" name="status" id="status">
                                                             <option value="validated"
-                                                                @if ($event->status == 'validated')  @endif>Validé</option>
+                                                                @if ($event->status == 'validated')  @endif>Validé
+                                                            </option>
                                                             <option value="pending"
                                                                 @if ($event->status == 'pending')  @endif>En attente
                                                             </option>
                                                             <option value="rejected"
-                                                                @if ($event->status == 'rejected')  @endif>Rejeté</option>
+                                                                @if ($event->status == 'rejected')  @endif>Rejeté
+                                                            </option>
                                                         </select>
                                                     </div>
                                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                                        <select name="promoter_id" id="promoter_id">
+                                                        <select class="form-control" name="promoter_id" id="promoter_id">
                                                             <option disabled value>Selectionnez un promoteur</option>
                                                             @foreach ($promoters as $promoter)
                                                                 <option value="{{ $promoter->id }}"
                                                                     @if ($promoter->id == $event->promoter->id) selected @endif>
-                                                                    {{ $promoter->lastname }} {{ $promoter->firstname }}
+                                                                    {{ $promoter->lastname }}
+                                                                    {{ $promoter->firstname }}
                                                                 </option>
                                                             @endforeach
                                                         </select>
                                                     </div>
                                                 </div>
+                                                <div class="modal-footer">
+                                                    <a class="btn btn-secondary" href="#!" type="button"
+                                                        data-dismiss="modal">Annuler</a>
+                                                    <button class="btn btn-success" type="submit">Mettre à
+                                                        jour</button>
+                                                </div>
+                                            </form>
                                         </div>
-                                        <div class="modal-footer">
-                                            <a class="btn btn-secondary" href="#!" type="button"
-                                                data-dismiss="modal">Annuler</a>
-                                            <button class="btn btn-success" type="submit">Mettre à
-                                                jour</button>
-                                        </div>
-                                        </form>
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="modal fade" id="evaluateEventModal{{ $event->id }}" tabindex="-1"
+                                role="dialog" aria-labelledby="updateEventLabel{{ $event->id }}" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Evaluer l'evenement
+                                                <b>{{ $event->title }} (By
+                                                    {{ $event->promoter->lastname }} {{ $event->promoter->lastname }})</b>
+                                            </h5>
+                                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form class="event" method="POST" id="add_event_form"
+                                                action="{{ route('admin.events.evaluate', $event) }}"
+                                                enctype="multipart/form-data">
+                                                @csrf
+                                                @method('put')
+                                                <div class="form-group row mb-2" style="margin-top: 20px">
+                                                    <div class="col-sm-12 mb-3 mb-sm-0">
+                                                        <select class="form-control" name="status" id="status">
+                                                            <option disabled value>Selectionnez une option</option>
+                                                            <option value="validated"
+                                                                @if ($event->status == 'validated') selected @endif>Valider
+                                                            </option>
+                                                            <option value="pending"
+                                                                @if ($event->status == 'pending') selected @endif>En cours
+                                                            </option>
+                                                            <option value="rejected"
+                                                                @if ($event->status == 'rejected') selected @endif>Rejeter
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="modal-footer" style="border:none!important;">
+                                                        <a class="btn btn-secondary" href="#!" type="button"
+                                                            data-dismiss="modal">Annuler</a>
+                                                        <button class="btn btn-success" type="submit">Mettre à
+                                                            jour</button>
+                                                    </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
                         @endforeach
                     </tbody>
                 </table>
@@ -249,7 +257,7 @@ selected
                                     name="title" placeholder="Titre">
                             </div>
                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                <select name="category_id" id="category_id">
+                                <select class="form-control" name="category_id" id="category_id">
                                     option disabled value>Selectionnez une categorie</option>
                                     @foreach ($categories as $category)
                                         <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -267,8 +275,8 @@ selected
                                     name="place" placeholder="Lieux de l'evenement">
                             </div>
                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                <input type="file" class="form-control form-control-user" id="cover"
-                                    name="cover" placeholder="Photo de couverture de l'evenement">
+                                <input type="file" class="form-control" id="cover" name="cover"
+                                    placeholder="Photo de couverture de l'evenement">
                             </div>
                         </div>
                         <hr style="margin-bottom: 0.2rem"><label>Autres informations</label>
@@ -288,14 +296,14 @@ selected
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                <select name="status" id="status">
+                                <select class="form-control" name="status" id="status">
                                     <option value="validated">Validé</option>
                                     <option value="pending">En attente</option>
                                     <option value="rejected">Rejeté</option>
                                 </select>
                             </div>
                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                <select name="promoter_id" id="promoter_id">
+                                <select class="form-control" name="promoter_id" id="promoter_id">
                                     <option disabled value>Selectionnez un promoteur</option>
                                     @foreach ($promoters as $promoter)
                                         <option value="{{ $promoter->id }}">{{ $promoter->lastname }}

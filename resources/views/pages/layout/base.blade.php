@@ -61,6 +61,7 @@
     <script src="{{ asset('assets/users/gen/js/mail-script.js') }} "></script>
     <script src="{{ asset('assets/users/gen/js/main.js') }} "></script>
     <script src="{{ asset('assets/users/auth/js/toastinette.js') }}"></script>
+    @yield("script");
     <script>
         @if (session('status'))
             Toastinette.init({

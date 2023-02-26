@@ -9,7 +9,9 @@ use Illuminate\Support\Facades\Auth;
 class PagesController extends Controller
 {
     public function index(){
-        return view("index");
+        $events = Event::where("status","validated")->limit(8)->get();
+        // dd($events);
+        return view("index",["events"=>$events]);
     }
 
     public function dashboard(){

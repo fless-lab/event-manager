@@ -89,7 +89,24 @@ class AdminsController extends Controller
     }
 
     public function eventsStore(Request $request){
-        // dd($request);
+        $start_date = $request->input('start_date');
+        $start_time = $request->input('start_time');
+        $end_date = $request->input('end_date');
+        $end_time = $request->input('end_time');
+
+        // Merge the start date and time values into a single datetime string
+        $start_datetime = date('Y-m-d H:i:s', strtotime("$start_date $start_time"));
+        $end_datetime = date('Y-m-d H:i:s', strtotime("$end_date $end_time"));
+
+        // Convert the datetime strings into Unix timestamps
+        $start_timestamp = strtotime($start_datetime);
+        $end_timestamp = strtotime($end_datetime);
+
+        if($start_timestamp>$end_timestamp){
+            return back()->with("error","La date de début ne peux pas être supérieur à la date de fin");
+        }
+
+        // dd($start_timestamp,$end_timestamp);
         $event = Event::create([
             "title"=>$request->title,
             "description"=>$request->description,
@@ -98,8 +115,8 @@ class AdminsController extends Controller
             "promoter_id"=>$request->promoter_id,
             "status"=>$request->status,
             "title"=>$request->title,
-            "start_date"=>$request->start_date."T".$request->start_time,
-            "end_date"=>$request->end_date."T".$request->end_time,
+            "start_date"=>$start_timestamp,
+            "end_date"=>$end_timestamp,
         ]);
 
         if($request->cover){
@@ -112,6 +129,22 @@ class AdminsController extends Controller
     }
 
     public function eventsUpdate(Request $request,Event $event){
+        $start_date = $request->input('start_date');
+        $start_time = $request->input('start_time');
+        $end_date = $request->input('end_date');
+        $end_time = $request->input('end_time');
+
+        // Merge the start date and time values into a single datetime string
+        $start_datetime = date('Y-m-d H:i:s', strtotime("$start_date $start_time"));
+        $end_datetime = date('Y-m-d H:i:s', strtotime("$end_date $end_time"));
+
+        // Convert the datetime strings into Unix timestamps
+        $start_timestamp = strtotime($start_datetime);
+        $end_timestamp = strtotime($end_datetime);
+
+        if($start_timestamp>$end_timestamp){
+            return back()->with("error","La date de début ne peux pas être supérieur à la date de fin");
+        }
         $event->update([
             "title"=>$request->title??$event->title,
             "description"=>$request->description??$event->description,
@@ -120,8 +153,10 @@ class AdminsController extends Controller
             "promoter_id"=>$request->promoter_id??$event->promoter_id,
             "status"=>$request->status??$event->status,
             "title"=>$request->title??$event->title,
-            "start_date"=>$request->start_date."T".$request->start_time??$event->start_date,
-            "end_date"=>$request->end_date."T".$request->end_time??$event->end_date,
+            "start_date"=>$start_timestamp,
+            "end_date"=>$end_timestamp,
+            "start_date"=>$start_timestamp??$event->start_date,
+            "end_date"=>$end_timestamp??$event->end_date,
         ]);
 
         if($request->cover){

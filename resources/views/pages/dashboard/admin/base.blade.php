@@ -198,6 +198,13 @@ nav{
             });
         </script>
     @endif
+    @if (session('error'))
+        <script>
+            toastr.error("{{ session('error') }}", "Erreur !", {
+                timeOut: 5000
+            });
+        </script>
+    @endif
 
     @if ($errors->any())
         @foreach ($errors->all() as $error)

@@ -20,6 +20,7 @@ use App\Http\Controllers\PagesController;
 
 Route::get('/', [PagesController::class,"index"])->name("index");
 Route::get('/events', [PagesController::class,"events"])->name("events");
+Route::get('/events/{event}', [EventController::class,"show"])->name("events.show");
 
 Route::group(["middleware" => ["auth"]], function () {
     //  Mettre les routes qui sont protégees par le fait que la personne soit authentifiée
@@ -29,7 +30,6 @@ Route::group(["middleware" => ["verified"]], function () {
 });
 
 Route::group(["middleware" => ["auth","verified"]], function () {
-    Route::get('/events/{event}', [EventController::class,"show"])->name("events.show");
 });
 
 // Route::post("events/categories/{category}")

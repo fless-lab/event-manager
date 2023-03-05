@@ -39,7 +39,7 @@
         </p>
         <br><br>
         <p style="text-align: start" class="container">
-            {{ $event->description }}  {{$event->start_date}} {{$event->end_date}}
+            {{ $event->description }} {{ $event->start_date }} {{ $event->end_date }}
         </p>
     </div>
 @endsection
@@ -47,8 +47,8 @@
 @section('script')
     <script>
         $(document).ready(function() {
-            var countDownDate = {{$event->start_date}};//new Date("March 5, 2023 15:37:25").getTime();
-            countDownDate =  Number(countDownDate);
+            var countDownDate = /*{{ $event->start_date }};*/ new Date("Februry 27, 2023 09:30:00").getTime();
+            countDownDate = Number(countDownDate);
             // Update the count down every 1 second
             var x = setInterval(function() {
 
@@ -58,7 +58,7 @@
                 // Find the distance between now an the count down date
                 var distance = countDownDate - now;
 
-                console.log(countDownDate,now,distance);
+                console.log(countDownDate, now, distance);
 
                 // Time calculations for days, hours, minutes and seconds
                 var days = Math.floor(distance / (1000 * 60 * 60 * 24));

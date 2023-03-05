@@ -9,6 +9,8 @@ use App\Models\Event;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\EventCategory;
+use App\Models\EventEvaluate;
+use App\Models\PromoterEvent;
 use Illuminate\Support\Facades\Hash;
 
 class AdminsController extends Controller
@@ -80,6 +82,7 @@ class AdminsController extends Controller
     public function eventsIndex(){
         $events = Event::all();
         $promoters = User::where("role_id",2)->get();
+        $evaluates = EventEvaluate::all();
         $categories = EventCategory::all();
         return view("pages.dashboard.admin.manage-events",["events"=>$events,"promoters"=>$promoters,'categories'=>$categories]);
     }
@@ -111,10 +114,9 @@ class AdminsController extends Controller
             "title"=>$request->title,
             "description"=>$request->description,
             "place"=>$request->place,
-            "category_id"=>$request->category_id,
             "promoter_id"=>$request->promoter_id,
+            "category_id"=>$request->category_id,
             "status"=>$request->status,
-            "title"=>$request->title,
             "start_date"=>$start_timestamp,
             "end_date"=>$end_timestamp,
         ]);
@@ -149,10 +151,9 @@ class AdminsController extends Controller
             "title"=>$request->title??$event->title,
             "description"=>$request->description??$event->description,
             "place"=>$request->place??$event->place,
-            "category_id"=>$request->category_id??$event->category_id,
             "promoter_id"=>$request->promoter_id??$event->promoter_id,
+            "category_id"=>$request->category_id??$event->category_id,
             "status"=>$request->status??$event->status,
-            "title"=>$request->title??$event->title,
             "start_date"=>$start_timestamp,
             "end_date"=>$end_timestamp,
             "start_date"=>$start_timestamp??$event->start_date,
@@ -174,7 +175,7 @@ class AdminsController extends Controller
 
     public function eventsEvaluate(Request $request,Event $event){
         $event->update([
-            "status"=>$request->status
+            "status"=>$request->status??$event->status,
         ]);
 
         return back()->with("success","Votre évalution a été prise en compte !");
@@ -183,8 +184,9 @@ class AdminsController extends Controller
 
     // Event categories management functions
     public function eventCategoriesIndex(){
+        $users = User::all();
         $categories = EventCategory::all();
-        return view("pages.dashboard.admin.manage-events-categories",["categories"=>$categories]);
+        return view("pages.dashboard.admin.manage-events-categories",["categories"=>$categories, "users"=>$users]);
     }
 
     public function eventCategoriesStore(Request $request){

@@ -20,6 +20,7 @@ use App\Http\Controllers\PagesController;
 
 Route::get('/', [PagesController::class,"index"])->name("index");
 Route::get('/events', [PagesController::class,"events"])->name("events");
+Route::post('/events', [PagesController::class,"reservationStore"])->name("events");
 Route::get('/events/{event}', [EventController::class,"show"])->name("events.show");
 
 Route::group(["middleware" => ["auth"]], function () {

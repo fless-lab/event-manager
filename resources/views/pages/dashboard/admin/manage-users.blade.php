@@ -6,8 +6,8 @@
             <div class="d-sm-flex align-items-center justify-content-between">
                 <h1 class="h3 mb-0 text-gray-800">Utilisateurs</h1>
                 <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" href="#"
-                    data-toggle="modal" data-target="#addUserModal"><i
-                        class="fas fa-users fa-sm text-white-50"></i>Ajouter un utilisateur</a>
+                    data-toggle="modal" data-target="#addUserModal"><i class="fas fa-users fa-sm text-white-50"></i>Ajouter un
+                    utilisateur</a>
             </div>
         </div>
         <div class="card-body">
@@ -30,11 +30,11 @@
                     </thead>
                     <tbody>
                         @php
-                            $i=0;
+                            $i = 0;
                         @endphp
                         @foreach ($users as $user)
                             <tr>
-                                <td>{{$i++}}</td>
+                                <td>{{ $i++ }}</td>
                                 <td>{{ $user->lastname }}</td>
                                 <td>{{ $user->firstname }}</td>
                                 <td>{{ $user->email }}</td>
@@ -43,6 +43,10 @@
                                 <td>{{ $user->username }}</td>
                                 <td>********</td>
                                 <td>{{ $user->created_at }}</td>
+                                {{-- @php
+                                        setlocale(LC_TIME, 'fr_FR');
+                                        echo strftime('%d %B %G', strtotime($voyage->jourDepart));
+                                    @endphp --}}
                                 <td><a style="color: green" href="#" data-toggle="modal"
                                         data-target="#updateUserModal{{ $user->id }}">Mettre à
                                         jour</a></td>
@@ -58,14 +62,14 @@
                                 </td>
                             </tr>
 
-                            <div class="modal fade" id="updateUserModal{{ $user->id }}" tabindex="-1"
-                                role="dialog" aria-labelledby="updateUserLabel{{ $user->id }}"
-                                aria-hidden="true">
+                            <div class="modal fade" id="updateUserModal{{ $user->id }}" tabindex="-1" role="dialog"
+                                aria-labelledby="updateUserLabel{{ $user->id }}" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="exampleModalLabel">Mettre à
-                                                jour l'utilisateur <b>{{ $user->lastname }} {{ $user->firstname }}</b></h5>
+                                                jour l'utilisateur <b>{{ $user->lastname }} {{ $user->firstname }}</b>
+                                            </h5>
                                             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">×</span>
                                             </button>
@@ -82,8 +86,8 @@
                                                             value="{{ $user->lastname }}">
                                                     </div>
                                                     <div class="col-sm-6">
-                                                        <input class="form-control form-control-user"
-                                                            id="firstname" name="firstname" placeholder="Prénom"
+                                                        <input class="form-control form-control-user" id="firstname"
+                                                            name="firstname" placeholder="Prénom"
                                                             value="{{ $user->firstname }}">
                                                     </div>
                                                 </div>
@@ -114,8 +118,11 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group row container" style="position: relative">
-                                                    <input type="checkbox" name="promoter" @if ($user->role->name=="Promoter") checked=true @endif id="promoter" style="position:absolute;top:5px">
-                                                    <label for="promoter" class="px-4"> Cet utilisateur est un promoteur.</label>
+                                                    <input type="checkbox" name="promoter"
+                                                        @if ($user->role->name == 'Promoter') checked=true @endif id="promoter"
+                                                        style="position:absolute;top:5px">
+                                                    <label for="promoter" class="px-4"> Cet utilisateur est un
+                                                        promoteur.</label>
                                                 </div>
 
                                         </div>
@@ -129,7 +136,6 @@
                                     </div>
                                 </div>
                             </div>
-
                         @endforeach
                     </tbody>
                 </table>

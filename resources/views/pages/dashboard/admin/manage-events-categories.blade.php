@@ -17,7 +17,6 @@
                         <tr>
                             <th>#</th>
                             <th>Titre</th>
-                            <th>Description</th>
                             <th>Date d'enregistrement</th>
                             <th>Mettre à jour</th>
                             <th>Supprimer</th>
@@ -25,16 +24,15 @@
                     </thead>
                     <tbody>
                         @php
-                            $i = 0;
+                            $i = 1;
                         @endphp
                         @foreach ($categories as $category)
                             <tr>
                                 <td>{{ $i++ }}</td>
-                                <td>{{ $category->title }}</td>
-                                <td>{{ $category->description }}</td>
-                                <td>{{ $user->created_at }}</td>
+                                <td>{{ $category->name }}</td>
+                                <td>{{ $category->created_at }}</td>
                                 <td><a style="color: green" href="#" data-toggle="modal"
-                                        data-target="#updateUserModal{{ $user->id }}">Mettre à
+                                        data-target="#updateUserModal{{ $category->id }}">Mettre à
                                         jour</a></td>
                                 <td>
                                     <form action="{{ route('admin.events.categories.delete', $category->id) }}"
@@ -48,8 +46,8 @@
                                 </td>
                             </tr>
 
-                            <div class="modal fade" id="updateUserModal{{ $user->id }}" tabindex="-1" role="dialog"
-                                aria-labelledby="updateUserLabel{{ $user->id }}" aria-hidden="true">
+                            <div class="modal fade" id="updateUserModal{{ $category->id }}" tabindex="-1" role="dialog"
+                                aria-labelledby="updateUserLabel{{ $category->id }}" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -67,12 +65,14 @@
                                                 <div class="form-group row">
                                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                                         <input type="text" class="form-control form-control-user"
-                                                            id="title" name="title" placeholder="Titre"
+                                                            id="title" name="title"
+                                                            placeholder="{{ $category->title }}"
                                                             value="{{ $category->title }}">
                                                     </div>
                                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                                         <input type="text" class="form-control form-control-user"
-                                                            id="description" name="description" placeholder="Description"
+                                                            id="description" name="description"
+                                                            placeholder="{{ $category->description }}"
                                                             value="{{ $category->description }}">
                                                     </div>
                                                 </div>
@@ -82,7 +82,7 @@
                                                     <button class="btn btn-success" type="submit">Mettre à
                                                         jour</button>
                                                 </div>
-                                                </form>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>

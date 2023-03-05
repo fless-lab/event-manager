@@ -18,7 +18,6 @@
                             <th>#</th>
                             <th>Titre</th>
                             <th>Descrition</th>
-                            <th>Promoteur</th>
                             <th>Lieux</th>
                             <th>Categorie</th>
                             <th>Status</th>
@@ -39,7 +38,6 @@
                                 <td>{{ $i++ }}</td>
                                 <td>{{ $event->title }}</td>
                                 <td>{{ $event->description }}</td>
-                                <td>{{ $event->promoter->lastname }} {{ $event->promoter->firstname }}</td>
                                 <td>{{ $event->place }}</td>
                                 <td>{{ $event->category->name }}</td>
                                 <td>{{ $event->status }}</td>
@@ -70,9 +68,7 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="exampleModalLabel">Mettre à
-                                                jour l'evenement <b>{{ $event->title }} (By
-                                                    {{ $event->promoter->lastname }}
-                                                    {{ $event->promoter->lastname }})</b>
+                                                jour l'evenement <b>{{ $event->title }} </b>
                                             </h5>
                                             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">×</span>
@@ -108,14 +104,12 @@
                                                 <div class="form-group row mb-2" style="margin-top: 20px">
                                                     <div class="col-sm-6">
                                                         <input type="place" class="form-control form-control-user"
-                                                            id="place" name="place"
-                                                            placeholder="Lieux de l'evenement"
+                                                            id="place" name="place" placeholder="Lieux de l'evenement"
                                                             value="{{ $event->place }}">
                                                     </div>
                                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                                         <input type="file" class="form-control" id="cover"
-                                                            name="cover"
-                                                            placeholder="Photo de couverture de l'evenement"
+                                                            name="cover" placeholder="Photo de couverture de l'evenement"
                                                             value="{{ $event->cover }}">
                                                     </div>
                                                 </div>
@@ -142,33 +136,6 @@
                                                             value="{{ date('h:i', $event->end_date) }}">
                                                     </div>
                                                 </div>
-                                                <div class="form-group row">
-                                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                                        <select class="form-control" name="status" id="status">
-                                                            <option value="validated"
-                                                                @if ($event->status == 'validated')  @endif>Validé
-                                                            </option>
-                                                            <option value="pending"
-                                                                @if ($event->status == 'pending')  @endif>En attente
-                                                            </option>
-                                                            <option value="rejected"
-                                                                @if ($event->status == 'rejected')  @endif>Rejeté
-                                                            </option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                                        <select class="form-control" name="promoter_id" id="promoter_id">
-                                                            <option disabled value>Selectionnez un promoteur</option>
-                                                            @foreach ($promoters as $promoter)
-                                                                <option value="{{ $promoter->id }}"
-                                                                    @if ($promoter->id == $event->promoter->id) selected @endif>
-                                                                    {{ $promoter->lastname }}
-                                                                    {{ $promoter->firstname }}
-                                                                </option>
-                                                            @endforeach
-                                                        </select>
-                                                    </div>
-                                                </div>
                                                 <div class="modal-footer">
                                                     <a class="btn btn-secondary" href="#!" type="button"
                                                         data-dismiss="modal">Annuler</a>
@@ -187,10 +154,10 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="exampleModalLabel">Evaluer l'evenement
-                                                <b>{{ $event->title }} (By
-                                                    {{ $event->promoter->lastname }} {{ $event->promoter->lastname }})</b>
+                                                <b>{{ $event->title }} </b>
                                             </h5>
-                                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                            <button class="close" type="button" data-dismiss="modal"
+                                                aria-label="Close">
                                                 <span aria-hidden="true">×</span>
                                             </button>
                                         </div>
@@ -226,8 +193,6 @@
                                     </div>
                                 </div>
                             </div>
-
-
                         @endforeach
                     </tbody>
                 </table>

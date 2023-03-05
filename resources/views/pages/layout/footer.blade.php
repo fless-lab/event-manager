@@ -13,7 +13,7 @@
                         Copyright &copy;
                         <script>
                             document.write(new Date().getFullYear());
-                        </script> All rights reserved | ATARMLA Abdou-Raouf
+                        </script> All rights reserved | KOMBATE Damelan
                     </p>
                 </div>
             </div>

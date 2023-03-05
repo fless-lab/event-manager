@@ -4,7 +4,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="shortcut icon" href="img/fav.png">
-    <meta name="author" content="Abdou-Raouf ATARMLA">
+    <meta name="author" content="KOMBATE Damelan">
     <meta name="description" content="Event management webapp">
     <meta name="keywords" content="events">
     <meta charset="UTF-8">
@@ -39,6 +39,7 @@
     @yield('header')
 
     @yield('main')
+    @yield('add-feature')
 
     @yield('footer')
 
@@ -61,7 +62,7 @@
     <script src="{{ asset('assets/users/gen/js/mail-script.js') }} "></script>
     <script src="{{ asset('assets/users/gen/js/main.js') }} "></script>
     <script src="{{ asset('assets/users/auth/js/toastinette.js') }}"></script>
-    @yield("script");
+    @yield('script');
     <script>
         @if (session('status'))
             Toastinette.init({

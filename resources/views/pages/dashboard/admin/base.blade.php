@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
-    <meta name="author" content="Abdou-Raouf ATARMLA">
+    <meta name="author" content="KOMBATE Damelan">
 
     <title>R-Event ◊ Super Panel</title>
     <link href="{{ asset('assets/super/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">

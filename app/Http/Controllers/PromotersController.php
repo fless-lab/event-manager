@@ -14,6 +14,7 @@ use App\Models\Reservation;
 use Illuminate\Support\Facades\Hash;
 use App\Models\TypeTicket;
 use App\Models\Ticket;
+use App\Models\Tarif;
 use Illuminate\Support\Facades\Auth;
 
 class PromotersController extends Controller
@@ -21,13 +22,14 @@ class PromotersController extends Controller
     public function index(){
         $events = Event::where("status","validated")->get();
         $total_events = count(Event::all());
+        $total_reservation = count(Reservation::all());
         $promoters = User::where("role_id",2)->get();
         $categories = EventCategory::all();
         $types = TypeTicket::all();
 
 
 
-        return view("pages.dashboard.promoter.index",["events"=>$events,"promoters"=>$promoters,'categories'=>$categories,'total_events'=>$total_events,'types'=>$types]);
+        return view("pages.dashboard.promoter.index",["events"=>$events,"promoters"=>$promoters,'categories'=>$categories, 'total_reservation'=>$total_reservation, 'total_events'=>$total_events,'types'=>$types]);
     }
     public function typeIndex(){
         $events = Event::where("status","validated")->get();
@@ -35,13 +37,13 @@ class PromotersController extends Controller
         $promoters = User::where("role_id",2)->get();
         $categories = EventCategory::all();
         $types = TypeTicket::all();
-        $tickets = Ticket::all();
+        $tarifs = Tarif::all();
         $reservations = Reservation::all();
         $users = User::all();
 
 
 
-        return view("pages.dashboard.promoter.type",["events"=>$events,'users'=>$users,'types'=>$types, 'reservations'=>$reservations, 'tickets'=>$tickets]);
+        return view("pages.dashboard.promoter.type",["events"=>$events,'users'=>$users,'types'=>$types, 'reservations'=>$reservations, 'tarifs'=>$tarifs]);
     }
 
     public function eventsIndex(){
@@ -125,6 +127,10 @@ class PromotersController extends Controller
     public function eventsDelete(Event $event){
         $event->delete();
         return redirect()->back()->with("success","Evenement supprimée avec succès !");
+    }
+    public function reservationDelete(Reservation $reservation){
+        $reservation->delete();
+        return redirect()->back()->with("success","Reservation supprimée avec succès !");
     }
 
 

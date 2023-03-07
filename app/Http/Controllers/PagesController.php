@@ -6,6 +6,7 @@ use App\Models\Event;
 use App\Models\User;
 use App\Models\Reservation;
 use App\Models\Ticket;
+use App\Models\Tarif;
 use App\Models\TypeTicket;
 use App\Models\PromoterEvent;
 use Illuminate\Http\Request;
@@ -34,8 +35,9 @@ class PagesController extends Controller
         $users = User::all();
         $tickets = Ticket::all();
         $types = TypeTicket::all();
+        $tarifs = Tarif::all();
         $events = Event::where("status","validated")->get();
-        return view("pages.event.event-list",["events"=>$events,'tickets'=>$tickets, 'users'=>$users, 'types'=>$types]);
+        return view("pages.event.event-list",["events"=>$events,'tarifs'=>$tarifs, 'users'=>$users, 'types'=>$types]);
     }
 
     // public function event(Event
@@ -43,7 +45,7 @@ class PagesController extends Controller
         $reservation = Reservation::create([
             "event_id"=>$request->event_id,
             "user_id"=>$request->user_id,
-            "ticket_id"=>$request->ticket_id
+            "tarif_id"=>$request->tarif_id
         ]);
         return back()->with("success","Reservation enregistré avec succès !");
     }

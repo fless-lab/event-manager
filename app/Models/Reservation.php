@@ -9,14 +9,14 @@ class Reservation extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'ticket_id',
+        'tarif_id',
         'user_id',
         'event_id',
     ];
 
 
-    public function ticket(){
-        return $this->belongsTo(Ticket::class);
+    public function tarif(){
+        return $this->belongsTo(Tarif::class);
       }
       public function user(){
         return $this->belongsTo(User::class);

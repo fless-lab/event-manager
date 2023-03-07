@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\PromotersController;
 use App\Http\Controllers\TypeTicketController;
+use App\Http\Controllers\TicketController;
+use App\Http\Requests\EventsRequest;
 
 
 /*
@@ -37,6 +39,12 @@ Route::group(["prefix"=>"promoter"], function(){
         Route::post('/ticket', [TypeTicketController::class,"ticketStore"])->name("promoter.ticket.store");
         Route::put('/tickets/{ticket}', [TypeTicketController::class,"ticketUpdate"])->name("promoter.ticket.update");
         Route::delete('/tickets/{ticket}', [TypeTicketController::class,"ticketDelete"])->name("promoter.ticket.delete");
+
+        //Manage tarif
+        Route::post('/tarif', [TicketController::class, "tarifStore"])->name("promoter.tarif.store");
+        Route::delete('/reservations/{reservation}', [PromotersController::class,"reservationDelete"])->name("promoter.reservation.delete");
+        Route::get("/qrcode",[TicketController::class, "code"]);
+        Route::get('/generatePdf',[TicketController::class, "generatePdf"])->name("promoter.tarif.pdf");
 
     });
 });

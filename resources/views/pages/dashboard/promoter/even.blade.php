@@ -38,7 +38,7 @@
                         <!-- small box -->
                         <div class="small-box bg-success">
                             <div class="inner">
-                                <h3>20<sup style="font-size: 20px"></sup></h3>
+                                <h3>{{ $total_reservation }}<sup style="font-size: 20px"></sup></h3>
 
                                 <p>Nombre Total des Reservations</p>
                             </div>
@@ -74,7 +74,7 @@
 
                                 <div class="card-tools">
                                     <div class="input-group input-group-sm" style="width: 150px;">
-                                        <input type="text" name="table_search" class="form-control float-right"
+                                        <input type="text" name="search" class="form-control float-right"
                                             placeholder="Search">
 
                                         <div class="input-group-append">
@@ -109,8 +109,8 @@
                                                 <td>{{ $event->description }}</td>
                                                 <td>{{ $event->place }}</td>
                                                 <td>{{ $event->category->name }}</td>
-                                                <td>{{ $event->start_date }}</td>
-                                                <td>{{ $event->end_date }}</td>
+                                                <td>{{ date('d/m/Y H:i', $event->start_date) }}</td>
+                                                <td>{{ date('d/m/Y H:i', $event->end_date) }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>

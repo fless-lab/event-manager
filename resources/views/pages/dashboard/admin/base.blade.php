@@ -32,93 +32,95 @@
         input.success {
             border: 1px solid green;
         }
+
         .sidebar {
             margin-top: 1rem;
-  background-color: #ddd;
-  position: fixed;
-  top: 0;
-  left: -200px;
-  height: 100%;
-  width: 200px;
-  transition: all 0.3s;
-  z-index: 98;
-}
-.sidebar.open {
-  left: 0;
-}
+            background-color: #ddd;
+            position: fixed;
+            top: 0;
+            left: -200px;
+            height: 100%;
+            width: 200px;
+            transition: all 0.3s;
+            z-index: 98;
+        }
 
-nav{
-    z-index: 99;
-}
+        .sidebar.open {
+            left: 0;
+        }
 
-@media screen and (max-width: 600px) {
-    .sidebar {
-        margin-top: 0;
-    position: fixed;
-    top: 60px;
-    left: -200px;
-    height: calc(100% - 60px);
-    width: 200px;
-    transition: all 0.3s;
-    z-index: 1;
-  }
+        nav {
+            z-index: 99;
+        }
 
-  .sidebar-header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 60px;
-  }
+        @media screen and (max-width: 600px) {
+            .sidebar {
+                margin-top: 0;
+                position: fixed;
+                top: 60px;
+                left: -200px;
+                height: calc(100% - 60px);
+                width: 200px;
+                transition: all 0.3s;
+                z-index: 1;
+            }
 
-  .sidebar-header h2 {
-    margin: 0;
-    font-size: 1.2rem;
-  }
+            .sidebar-header {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 60px;
+            }
 
-  .sidebar-links {
-    display: none;
-    padding-top: 20px;
-  }
+            .sidebar-header h2 {
+                margin: 0;
+                font-size: 1.2rem;
+            }
 
-  .sidebar.open .sidebar-links {
-    display: block;
-  }
+            .sidebar-links {
+                display: none;
+                padding-top: 20px;
+            }
 
-  .sidebar.open {
-    left: 0;
-  }
-}
+            .sidebar.open .sidebar-links {
+                display: block;
+            }
 
-.sidebar-header {
-  padding: 10px;
-  text-align: center;
-}
+            .sidebar.open {
+                left: 0;
+            }
+        }
 
-.sidebar-header h2 {
-  margin: 0;
-}
+        .sidebar-header {
+            padding: 10px;
+            text-align: center;
+        }
 
-.sidebar-links {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
+        .sidebar-header h2 {
+            margin: 0;
+        }
 
-.sidebar-links li {
-  margin-bottom: 10px;
-}
+        .sidebar-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
 
-.sidebar-links a {
-  display: block;
-  padding: 10px;
-  color: #333;
-  text-decoration: none;
-}
+        .sidebar-links li {
+            margin-bottom: 10px;
+        }
 
-.sidebar-links a:hover , .sidebar-links a.active {
-  background-color: #ccc;
-}
+        .sidebar-links a {
+            display: block;
+            padding: 10px;
+            color: #333;
+            text-decoration: none;
+        }
 
+        .sidebar-links a:hover,
+        .sidebar-links a.active {
+            background-color: #ccc;
+        }
     </style>
 
 </head>
@@ -128,17 +130,22 @@ nav{
         <div class="sidebar">
             <div class="sidebar-header">
                 <h4>R-Events</h4>
-              </div>
-              <ul class="sidebar-links">
-                <li><a class="{{ Request::routeIs('admin.index') ? 'active' : '' }}" href="{{route("admin.index")}}">Dashboard</a></li>
-                <li><a class="{{ Request::routeIs('admin.users.*') ? 'active' : '' }}" href="{{route("admin.users.index")}}">Users</a></li>
-                <li><a class="{{ Request::routeIs('admin.events.*') ? 'active' : '' }}" href="{{route("admin.events.index")}}">Events</a></li>
-                <li><a class="{{ Request::routeIs('admin.events.categories.*') ? 'active' : '' }}" href="{{route("admin.events.categories.index")}}">Event Categories</a></li>
-              </ul>
+            </div>
+            <ul class="sidebar-links">
+                <li><a class="{{ Request::routeIs('admin.index') ? 'active' : '' }}"
+                        href="{{ route('admin.index') }}">Dashboard</a></li>
+                <li><a class="{{ Request::routeIs('admin.users.*') ? 'active' : '' }}"
+                        href="{{ route('admin.users.index') }}">Users</a></li>
+                <li><a class="{{ Request::routeIs('admin.events.*') ? 'active' : '' }}"
+                        href="{{ route('admin.events.index') }}">Events</a></li>
+                <li><a class="{{ Request::routeIs('admin.categories.*') ? 'active' : '' }}"
+                        href="{{ route('admin.events.categories.index') }}">Event Categories</a></li>
+            </ul>
         </div>
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow d-flex" style="justify-content: space-between">
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow d-flex"
+                    style="justify-content: space-between">
                     <div class="header center">
                         <h5 style="display:inline" class="navbar-left">R-Event ◊ Super Panel</h5>
                         <form action="{{ route('logout') }}" id="logoutForm" method="post" style="display:inline">

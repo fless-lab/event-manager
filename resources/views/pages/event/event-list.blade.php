@@ -136,27 +136,20 @@
                                                         @endif
                                                     </div>
                                                     <div class="col-sm-12 mb-3 mb-sm-0">
-                                                        <select class="form-control" name="ticket_id" id="ticket_id">
+                                                        <select class="form-control" name="tarif_id" id="tarif_id"
+                                                            required>
                                                             <option disabled value>Selectionnez un ticket</option>
-
-                                                            @foreach ($types as $type)
-                                                                @if ($event->id == $type->event_id)
-                                                                    @foreach ($tickets as $ticket)
-                                                                        @if ($type->id == $ticket->type_id)
-                                                                            <option value="{{ $ticket->id }}"
-                                                                                @if ($type->id == $ticket->type_id) selected @endif>
-                                                                                {{ $ticket->name }}
-                                                                                {{ $type->price }}
-                                                                            </option>
-                                                                        @endif
-                                                                    @endforeach
+                                                            @foreach ($tarifs as $tarif)
+                                                                @if ($event->id == $tarif->event_id)
+                                                                    <option value="{{ $tarif->id }}"
+                                                                        @if ($event->id == $tarif->event_id) selected @endif>
+                                                                        {{ $tarif->name }}
+                                                                        {{ $tarif->price }}
+                                                                    </option>
                                                                 @endif
                                                             @endforeach
-
                                                         </select>
                                                     </div>
-
-
 
                                             </div>
                                             <div class="modal-footer">

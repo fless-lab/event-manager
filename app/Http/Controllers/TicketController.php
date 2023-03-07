@@ -7,9 +7,12 @@ use App\Models\Event;
 use Carbon\Carbon;
 use App\Models\Role;
 use App\Models\User;
+use App\Models\Reservation;
 use App\Models\TypeTicket;
 use App\Models\Ticket;
+use App\Models\Tarif;
 use App\Models\EventCategory;
+use PDF;
 
 class TicketController extends Controller
 {
@@ -45,5 +48,29 @@ class TicketController extends Controller
     public function typeDelete(TypeTicket $type){
         $type->delete();
         return redirect()->back()->with("success","Type de ticket supprimée avec succès !");
+    }
+
+    // Manage of tarifs
+    public function tarifStore(Request $request)
+    {
+
+        Tarif::create($request->all());
+        return redirect('/');
+    }
+
+    public function code()
+    {
+        $events = Event::all();
+        $promoters = User::where("role_id",2)->get();
+        $tarifs = Tarif::all();
+        $users = User::all();
+        $reservations = Reservation::all();
+        return view('pages.dashboard.promoter.qrcode', ['events'=>$events,'reservations'=>$reservations, 'users'=>$users, 'promoters'=>$promoters, 'tarifs'=>$tarifs]);
+    }
+    public function generatePdf()
+    {
+
+        $pdf = PDF::loadView('pages.dashboard.promoter.qrcode');
+        return $pdf->download('pages.dashboard.promoter.qrcode.pdf');
     }
 }

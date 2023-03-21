@@ -8,7 +8,6 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ asset('assets/dashboard/promoters/css/all.min.css') }}">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Tempusdominus Bbootstrap 4 -->
@@ -28,15 +27,8 @@
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="{{ asset('assets/dashboard/promoters/css/style.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
-        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('assets/css/all.min.css')}}">
 </head>
-
-</head>
-
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
         <!-- Navbar -->
@@ -44,7 +36,7 @@
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="{{ route('index') }}" role="button"><i
+                    <a class="nav-link" id="test" data-widget="pushmenu" href="{{ route('index') }}" role="button"><i
                             class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
@@ -53,7 +45,7 @@
             </ul>
 
             <!-- Right navbar links -->
-        </nav>
+        </nav> 
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
@@ -69,6 +61,11 @@
                         data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+               
+
+
+
+
                         <li class="nav-item has-treeview ">
                             <a href="{{ route('promoter.index') }}" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -104,7 +101,7 @@
         <!-- Content Wrapper. Contains page content -->
         <div>
             @yield('content')
-        </div>
+
         @yield('add-feature')
         @yield('add')
         <!-- /.content-wrapper -->
@@ -146,24 +143,20 @@
     <!-- AdminLTE for demo purposes -->
     <script src="{{ asset('assets/dashboard/promoters/js/demo.js') }}}"></script>
     <script>
-        $(function() {
-            var url = window.location;
-            // for single sidebar menu
-            $('ul.nav-sidebar a').filter(function() {
-                return this.href == url;
-            }).addClass('active');
+        let test = document.getElementById('test');
+        //if(windows.location.href == '/promoter/dashboard')
+        //{
+            test.addEventListener('click', function() {
+                test.classList.remove("sidebar-closed");
+                test.classList.add("sidebar-open");
+            }, false);
 
-            // for sidebar menu and treeview
-            $('ul.nav-treeview a').filter(function() {
-                    return this.href == url;
-                }).parentsUntil(".nav-sidebar > .nav-treeview")
-                .css({
-                    'display': 'block'
-                })
-                .addClass('menu-open').prev('a')
-                .addClass('active');
-        });
+        //}
     </script>
+
+
+
+
 
 </body>
 

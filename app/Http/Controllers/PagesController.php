@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Auth;
 class PagesController extends Controller
 {
     public function index(){
-        $events = Event::where("status","validated")->limit(8)->get();
+        $events = Event::where("status","validated")->limit(9)->get();
         // dd($events);
         return view("index",["events"=>$events]);
     }
@@ -47,6 +47,40 @@ class PagesController extends Controller
             "user_id"=>$request->user_id,
             "tarif_id"=>$request->tarif_id
         ]);
-        return back()->with("success","Reservation enregistré avec succès !");
+        return redirect()->route('promoter.tarif.pdf');
+        return to_route('index');
+    }
+
+    public function search(Request $request)
+    {
+        $users = User::all();
+        $tarifs = Tarif::all();
+        $events = Event::where([
+            ["title","!=", Null],
+            [function($query) use ($request){
+                if($name = $request->name){
+                    $query->orwhere('title', 'Like', '%'.$name.'%')->get();
+                }
+            }]
+        ])->get();
+        return view("pages.event.event-list", ["events"=>$events,'tarifs'=>$tarifs, 'users'=>$users]);  
+    }
+    public function share()
+    {
+
+        $date = [
+            'id'=> 1,
+            'title'=>'The title',
+        ];
+
+
+        $sharebuttons = \Share::page(
+            'http://jorenvanhocht.be','title'
+        )->facebook()
+        ->twitter()
+        ->linkedin('Extra linkedin summary can be passed here')
+        ->whatsapp();
+
+        return view('pages.event.event-list',['sharebuttons'=>$sharebuttons]);
     }
 }

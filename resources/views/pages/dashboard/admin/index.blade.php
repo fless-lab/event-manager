@@ -71,7 +71,7 @@
                 <h1>{{ $categories }}</h1>
             </div>
             <div class="p p-3">
-                <a href="{{ route('admin.events.categories.index') }}">event categories</a>
+                <a href="{{ route('admin.events-categories.index') }}">event categories</a>
             </div>
         </div>
     </div>

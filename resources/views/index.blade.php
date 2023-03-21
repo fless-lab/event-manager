@@ -66,100 +66,20 @@
     </section>
     <div class="section-top-border overlay-bg" style="margin-top: -250px">
         <div class="row gallery-item mx-2">
-            {{-- @foreach ($events as $event) --}}
+            @foreach ($events as $event) 
 
-            {{-- <div class="col-md-4 event-card">
-                <a href="#" class="genric-btn success circle arrow event-details-btn"
+             <div class="col-md-4 event-card">
+                <a href="{{ route('events.show', $event) }}" class="genric-btn success circle arrow event-details-btn"
                     style="width:fit-content;border-radius:50%;padding:.8rem;"><i class="fa-solid fa-arrow-right"></i></a>
-                <a href="{{ asset('assets/users/gen/img/g1.jpg') }}" class="img-pop-up">
+                <a href="{{ $event->cover }}" class="img-pop-up">
                     <div class="single-gallery-image"
-                        style="background:linear-gradient(var(--event-card-ovelay-color), var(--event-card-ovelay-color)), url({{ asset('assets/users/gen/img/g1.jpg') }});">
-                        <h2 class="event-title">Event Title Appears</h2>
+                        style="background:linear-gradient(var(--event-card-ovelay-color), var(--event-card-ovelay-color)), url({{ $event->cover }});">
+                        <h2 class="event-title">{{ $event->title }}</h2>
                     </div>
                 </a>
             </div>
-            @endforeach --}}
-            <div class="col-md-4 event-card">
-                <a href="#" class="genric-btn success circle arrow event-details-btn"
-                    style="width:fit-content;border-radius:50%;padding:.8rem;"><i class="fa-solid fa-arrow-right"></i></a>
-                <a href="{{ asset('assets/users/gen/img/g1.jpg') }}" class="img-pop-up">
-                    <div class="single-gallery-image"
-                        style="background:linear-gradient(var(--event-card-ovelay-color), var(--event-card-ovelay-color)), url({{ asset('assets/users/gen/img/g1.jpg') }});">
-                        <h2 class="event-title">Event Title Appears</h2>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4 event-card">
-                <a href="#" class="genric-btn success circle arrow event-details-btn"
-                    style="width:fit-content;border-radius:50%;padding:.8rem;"><i class="fa-solid fa-arrow-right"></i></a>
-                <a href="{{ asset('assets/users/gen/img/g2.jpg') }}" class="img-pop-up">
-                    <div class="single-gallery-image"
-                        style="background:linear-gradient(var(--event-card-ovelay-color), var(--event-card-ovelay-color)), url({{ asset('assets/users/gen/img/g2.jpg') }});">
-                        <h2 class="event-title">Event Title Appears</h2>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4 event-card">
-                <a href="#" class="genric-btn success circle arrow event-details-btn"
-                    style="width:fit-content;border-radius:50%;padding:.8rem;"><i class="fa-solid fa-arrow-right"></i></a>
-                <a href="{{ asset('assets/users/gen/img/g3.jpg') }}" class="img-pop-up">
-                    <div class="single-gallery-image"
-                        style="background:linear-gradient(var(--event-card-ovelay-color), var(--event-card-ovelay-color)), url({{ asset('assets/users/gen/img/g3.jpg') }});">
-                        <h2 class="event-title">Event Title Appears</h2>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-6 event-card">
-                <a href="#" class="genric-btn success circle arrow event-details-btn"
-                    style="width:fit-content;border-radius:50%;padding:.8rem;"><i class="fa-solid fa-arrow-right"></i></a>
-                <a href="{{ asset('assets/users/gen/img/g4.jpg') }}" class="img-pop-up">
-                    <div class="single-gallery-image"
-                        style="background:linear-gradient(var(--event-card-ovelay-color), var(--event-card-ovelay-color)), url({{ asset('assets/users/gen/img/g4.jpg') }});">
-                        <h2 class="event-title">Event Title Appears</h2>
-
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-6 event-card">
-                <a href="#" class="genric-btn success circle arrow event-details-btn"
-                    style="width:fit-content;border-radius:50%;padding:.8rem;"><i class="fa-solid fa-arrow-right"></i></a>
-                <a href="{{ asset('assets/users/gen/img/g5.jpg') }}" class="img-pop-up">
-                    <div class="single-gallery-image"
-                        style="background:linear-gradient(var(--event-card-ovelay-color), var(--event-card-ovelay-color)), url({{ asset('assets/users/gen/img/g5.jpg') }});">
-                        <h2 class="event-title">Event Title Appears</h2>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4 event-card">
-                <a href="#" class="genric-btn success circle arrow event-details-btn"
-                    style="width:fit-content;border-radius:50%;padding:.8rem;"><i class="fa-solid fa-arrow-right"></i></a>
-                <a href="{{ asset('assets/users/gen/img/g6.jpg') }}" class="img-pop-up">
-                    <div class="single-gallery-image"
-                        style="background:linear-gradient(var(--event-card-ovelay-color), var(--event-card-ovelay-color)), url({{ asset('assets/users/gen/img/g6.jpg') }});">
-                        <h2 class="event-title">Event Title Appears</h2>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4 event-card">
-                <a href="#" class="genric-btn success circle arrow event-details-btn"
-                    style="width:fit-content;border-radius:50%;padding:.8rem;"><i class="fa-solid fa-arrow-right"></i></a>
-                <a href="{{ asset('assets/users/gen/img/g7.jpg') }}" class="img-pop-up">
-                    <div class="single-gallery-image"
-                        style="background:linear-gradient(var(--event-card-ovelay-color), var(--event-card-ovelay-color)), url({{ asset('assets/users/gen/img/g7.jpg') }});">
-                        <h2 class="event-title">Event Title Appears</h2>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4 event-card">
-                <a href="#" class="genric-btn success circle arrow event-details-btn"
-                    style="width:fit-content;border-radius:50%;padding:.8rem;"><i class="fa-solid fa-arrow-right"></i></a>
-                <a href="{{ asset('assets/users/gen/img/g8.jpg') }}" class="img-pop-up">
-                    <div class="single-gallery-image"
-                        style="background:linear-gradient(var(--event-card-ovelay-color), var(--event-card-ovelay-color)), url({{ asset('assets/users/gen/img/g8.jpg') }});">
-                        <h2 class="event-title">Event Title Appears</h2>
-                    </div>
-                </a>
-            </div>
+            @endforeach 
+           
         </div>
         <div class="text-center mt-3">
             <a href="{{ route('events') }}" class="genric-btn info medium radius">See all events &nbsp;&nbsp;<i

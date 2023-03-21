@@ -34,6 +34,21 @@
 .card-title:hover {
     color: rgb(9, 85, 125);
 }
+input{
+    outline:none;
+    border:none;
+}
+.links{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 6%;
+    display: flex;
+    padding:5px;
+}
+.links p{
+    margin: 2px;
+}
 
 .btn {
     background: gray;
@@ -57,14 +72,16 @@
                         <h1 class="mb-12">Consultez notre liste d'événements</h1>
                         <p>Vous pouvez utiliser les champs de recherche pour filtrer votre demande.</p>
                         <p>
-                        <div class="input-group mb-3 px-3">
-                            <input type="text" class="form-control" placeholder="Rechercher ......"
-                                aria-label="Nom de l'evenement">
-                            <div class="input-group-append">
-                                <span class="input-group-text"><i class="fa fa-search"></i></span>
+                        <form action="{{ route('index.search') }}" method="get">
+                            <div class="input-group mb-3 px-3">
+                                <input type="text" name="name" class="form-control" placeholder="Rechercher ......"
+                                    aria-label="Nom de l'evenement">
+                                <div class="input-group-append mr-3">
+                                    <span class="input-group-text"><i class="fa fa-search"></i></span>
+                                </div>
+                                <button class="btn btn-primary" type="submit" id="button">Rechercher</button> 
                             </div>
-                        </div>
-
+                        </form> 
                         </p>
                     </div>
                 </div>
@@ -72,10 +89,10 @@
             <div class="container">
 
 
-                <div class="card-deck row">
+                <div class="card-deck row" >
 
                     @foreach ($events as $event)
-                        <div class="col-xs-12 col-sm-6 col-md-4">
+                        <div class="col-xs-12 col-sm-6 col-md-4" style= "margin-bottom:20px;">
                             <div class="card h-100">
                                 {{-- <span class="badge badge-success event-badge">Dans 3 jours</span> --}}
                                 <div class="view ">
@@ -100,6 +117,13 @@
                                     <a href="#" data-toggle="modal" class="btn btn-light-blue btn-md"
                                         data-target="#updateUserModal{{ $event->id }}">Reserver</a>
 
+                                    <div class="links">
+                                        <p>{!! Share::page('null','title')->facebook() !!}</p>
+                                        <p>{!! Share::page('null','title')->twitter() !!}</p>
+                                        <p>{!! Share::page('null','title')->linkedin() !!}</p>
+                                        <p>{!! Share::page('null','title')->whatsapp() !!}</p>
+                                    </div>
+                                
                                 </div>
                                 <div class="modal fade" id="updateUserModal{{ $event->id }}" tabindex="-1"
                                     role="dialog" aria-labelledby="updateUserLabel{{ $event->id }}"

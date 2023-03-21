@@ -43,6 +43,7 @@ class AdminsController extends Controller
             "password" => Hash::make($request->password),
             "role_id" => $role->id
         ]);
+    
 
         // Send an email with username and password to user
 

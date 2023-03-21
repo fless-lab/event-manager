@@ -15,52 +15,31 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-top: 20px;
-        background: url({{ asset('assets/super/img/undraw_profile_1.svg') }}) center !important;
-        background-repeat: no-repeat !important;
-        background-size: cover !important;
-        color: #fff;
+        margin-top: 10%;
     }
 
     .test {
         margin: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    a{
+      
     }
 </style>
 
 <body>
     <div class="wrapper">
-        <div class="test">
-            @foreach ($reservations as $reservation)
-                @foreach ($promoters as $promoter)
-                    @foreach ($events as $event)
-                        @if ($promoter->id == $event->promoter_id)
-                            @if ($event->id == $reservation->event_id)
-                                @foreach ($tarifs as $tarif)
-                                    @if ($tarif->id == $reservation->tarif_id)
-                                        @foreach ($users as $user)
-                                            @if ($user->id == $reservation->user_id)
-                                                <p>Evenement :{{ $event->title }}</p>
-                                                <p>Ticket :{{ $tarif->name }}</p>
-                                                <p>Prix :{{ $tarif->price }}</p>
-                                                <p>Nom :{{ $user->lastname }} </p>
-                                                <p>Prénom :{{ $user->firstname }}</p>
-                                                <p>Promoter : {{ $promoter->lastname }}</p>
-                                            @endif
-                                        @endforeach
-                                    @endif
-                                @endforeach
-                            @endif
-                        @endif
-                    @endforeach
-                @endforeach
-            @endforeach
-        </div>
+        
         <div class="card">
             <div class="card-body">
-                {!! QrCode::size(150)->generate('KOMBATE Damelan') !!}
+                <img src="data:image/png;base64, {!! base64_encode(QrCode::size(200)->generate('KOMBATE Damelan')) !!} ">
             </div>
         </div>
+        
     </div>
+    
 
 
 

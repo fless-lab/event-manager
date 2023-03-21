@@ -28,6 +28,10 @@ Route::group(["prefix"=>"promoter"], function(){
         Route::put('/events/{event}', [PromotersController::class,"eventsUpdate"])->name("promoter.events.update");
         Route::delete('/events/{event}', [PromotersController::class,"eventsDelete"])->name("promoter.events.delete");
 
+        Route::get('/search', [PromotersController::class, "search"])->name("promoter.search");
+        Route::get('/search2', [PromotersController::class, "search2"])->name("promoter.search2");
+        
+
 
         //Manage  Type Ticket
         Route::get('/type', [TypeTicketController::class,"typeIndex"])->name("promoter.type.index");

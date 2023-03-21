@@ -1,17 +1,10 @@
-@extends('pages.dashboard.promoter.base')
-@section('content')
-    <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <div class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <!-- /.col -->
-
-                </div><!-- /.row -->
-            </div><!-- /.container-fluid -->
-        </div>
+@extends('pages.dashboard.promoter.base1')
+@section('cont')
+<script>
+    document.getElementById('event').setAttribute('class','nav-link active')
+</script>
         <!-- /.content-header -->
-        <div class="card shadow ml-3 mr-3">
+        <div class="card shadow ml-3 mr-3" style="width : 100%">
             <div class="card-header py-3">
                 <div class="d-sm-flex align-items-center justify-content-between">
                     <h1 class="h3 mb-0 text-gray-800">Evenements</h1>
@@ -39,7 +32,6 @@
                                 <th>Tarifs</th>
                                 <th>Modifier</th>
                                 <th>Supprimer</th>
-                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -47,34 +39,35 @@
                                 $i = 1;
                             @endphp
                             @foreach ($events as $event)
-                                <tr>
-                                    <td>{{ $i++ }}</td>
-                                    <td>{{ $event->title }}</td>
-                                    <td>{{ $event->description }}</td>
-                                    <td>{{ $event->place }}</td>
-                                    <td>{{ $event->category->name }}</td>
-                                    <td>{{ $event->status }}</td>
-                                    <td>{{ date('d/m/Y H:i', $event->start_date) }}</td>
-                                    <td>{{ date('d/m/Y H:i', $event->end_date) }}</td>
-                                    <td><a style="color: blue" href="#" data-toggle="modal"
-                                            data-target="#updateTarifModal{{ $event->id }}">Tarifs</a>
-                                    </td>
-                                    <td><a style="color: green" href="#" data-toggle="modal"
-                                            data-target="#updateEventModal{{ $event->id }}">Mettre à
-                                            jour</a>
-                                    </td>
-                                    <td>
-                                        <form action="{{ route('promoter.events.delete', $event->id) }}" method="POST"
-                                            class="inline-block">
-                                            @csrf
-                                            @method('delete')
-                                            <button type="submit" class="btn btn-inline text-danger">
-                                                Supprimer
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-
+                                @if ($event->promoter_id == Auth::user()->id)
+                                    <tr>
+                                        <td>{{ $i++ }}</td>
+                                        <td>{{ $event->title }}</td>
+                                        <td>{{ $event->description }}</td>
+                                        <td>{{ $event->place }}</td>
+                                        <td>{{ $event->category->name }}</td>
+                                        <td>{{ $event->status }}</td>
+                                        <td>{{ date('d/m/Y H:i', $event->start_date) }}</td>
+                                        <td>{{ date('d/m/Y H:i', $event->end_date) }}</td>
+                                        <td><a style="color: blue" href="#" data-toggle="modal"
+                                                data-target="#updateTarifModal{{ $event->id }}">Tarifs</a>
+                                        </td>
+                                        <td><a style="color: green" href="#" data-toggle="modal"
+                                                data-target="#updateEventModal{{ $event->id }}">Mettre à
+                                                jour</a>
+                                        </td>
+                                        <td>
+                                            <form action="{{ route('promoter.events.delete', $event->id) }}" method="POST"
+                                                class="inline-block">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="submit" class="btn btn-inline text-danger">
+                                                    Supprimer
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endif
                                 <div class="modal fade" id="updateEventModal{{ $event->id }}" tabindex="-1"
                                     role="dialog" aria-labelledby="updateEventLabel{{ $event->id }}"
                                     aria-hidden="true">

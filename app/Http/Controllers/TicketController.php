@@ -53,9 +53,14 @@ class TicketController extends Controller
     // Manage of tarifs
     public function tarifStore(Request $request)
     {
-
+        $start_date = $request->input('start_date');
+        $end_date = $request->input('end_date');
+        if($start_date > $end_date ){
+            return back()->with("error","La date de début ne peux pas être supérieur à la date de fin");
+        }
         Tarif::create($request->all());
-        return redirect('/');
+        
+        return redirect()->route("promoter.events.index");
     }
 
     public function code()

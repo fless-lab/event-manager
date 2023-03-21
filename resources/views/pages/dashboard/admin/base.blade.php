@@ -138,8 +138,8 @@
                         href="{{ route('admin.users.index') }}">Users</a></li>
                 <li><a class="{{ Request::routeIs('admin.events.*') ? 'active' : '' }}"
                         href="{{ route('admin.events.index') }}">Events</a></li>
-                <li><a class="{{ Request::routeIs('admin.categories.*') ? 'active' : '' }}"
-                        href="{{ route('admin.events.categories.index') }}">Event Categories</a></li>
+                <li><a class="{{ Request::routeIs('admin.events-categories.*') ? 'active' : '' }}"
+                        href="{{ route('admin.events-categories.index')}}">Event Categories</a></li>
             </ul>
         </div>
         <div id="content-wrapper" class="d-flex flex-column">

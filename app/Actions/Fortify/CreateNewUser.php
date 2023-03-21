@@ -9,6 +9,7 @@ use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
+use Illuminate\Support\Facades\Mail;
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -48,13 +49,19 @@ class CreateNewUser implements CreatesNewUsers
             'role_id' => $role->id,
         ]);
 
+        
+
         // 1- Flasher une alerte disans que le compte a été créé avec succès, checker son mail pour
         // recuperer son username et verifier son mail
         // 2- Envoyer un mail à l'utilisateur avec son username
         // $request->session()->flash('status', "Account created successfully. Now check your inbox to get your unique 'username'");
         // $request->session()->flash('registration', "To active your account, verify your email address. We've emailed you a link for that");
 
-
+        
+        // Mail::send('email', $user->toArray(), function($message){
+        //     $message->to('kombatedamelan@gmail.com', 'events')
+        //     ->subject('utilisateur créer');
+        // });
         return $user;
     }
 }

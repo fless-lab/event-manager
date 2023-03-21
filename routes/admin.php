@@ -34,7 +34,7 @@ Route::group(["prefix"=>"admin"], function(){
 
 
         // Manage events categories
-        Route::get("/events-categories",[AdminsController::class,"eventCategoriesIndex"])->name("admin.events.categories.index");
+        Route::get("/events-categories",[AdminsController::class,"eventCategoriesIndex"])->name("admin.events-categories.index");
         Route::post("/events-categories",[AdminsController::class,"eventCategoriesStore"])->name("admin.events.categories.store");
         Route::put("/events-categories/{category}",[AdminsController::class,"eventCategoriesUpdate"])->name("admin.events.categories.update");
         Route::delete("/events-categories/{category}",[AdminsController::class,"eventCategoriesDelete"])->name("admin.events.categories.delete");

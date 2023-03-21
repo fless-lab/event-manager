@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Models\Role;
@@ -20,25 +20,35 @@ use Illuminate\Support\Facades\Auth;
 class PromotersController extends Controller
 {
     public function index(){
+        $a = Auth::user()->id;
         $events = Event::where("status","validated")->get();
-        $total_events = count(Event::all());
-        $total_reservation = count(Reservation::all());
+        // $events = Event::paginate(8);
+        $total_reservation = count(Reservation::join('events','events.id', '=', 'reservations.event_id')
+                                                    ->where("promoter_id","$a")
+                                                    ->get());
+        $users = User::all();
         $promoters = User::where("role_id",2)->get();
         $categories = EventCategory::all();
-        $types = TypeTicket::all();
+        $revenu = Tarif::join('events','events.id', '=', 'tarifs.event_id')
+                            ->where("promoter_id","$a")
+                            ->sum("price");
+        $total_events = count(Event::where("promoter_id", "$a")->get());
+        $reservations = Reservation::all();
 
 
-
-        return view("pages.dashboard.promoter.index",["events"=>$events,"promoters"=>$promoters,'categories'=>$categories, 'total_reservation'=>$total_reservation, 'total_events'=>$total_events,'types'=>$types]);
+        return view("pages.dashboard.promoter.index",["events"=>$events, "reservations"=>$reservations, "users"=>$users, "promoters"=>$promoters,'categories'=>$categories, 'total_reservation'=>$total_reservation, 'total_events'=>$total_events,'revenu'=>$revenu]);
+        
+        
     }
     public function typeIndex(){
+        $a = Auth::user()->id;
         $events = Event::where("status","validated")->get();
-        $total_events = count(Event::all());
         $promoters = User::where("role_id",2)->get();
         $categories = EventCategory::all();
         $types = TypeTicket::all();
         $tarifs = Tarif::all();
-        $reservations = Reservation::all();
+        $reservations = Reservation::where("user_id","$a")->get();
+        $reservations = Reservation::paginate(5);
         $users = User::all();
 
 
@@ -47,7 +57,7 @@ class PromotersController extends Controller
     }
 
     public function eventsIndex(){
-        $events = Event::paginate(2);
+        $events = Event::paginate(4);
         $promoters = User::where("role_id",2)->get();
         $categories = EventCategory::all();
         return view("pages.dashboard.promoter.manage-events",["events"=>$events,"promoters"=>$promoters,'categories'=>$categories]);
@@ -133,5 +143,53 @@ class PromotersController extends Controller
         return redirect()->back()->with("success","Reservation supprimée avec succès !");
     }
 
-
+    public function search(Request $request)
+    {
+        $a = Auth::user()->id;
+        $total_events = count(Event::all());
+        $total_reservation = count(Reservation::join('events','events.id', '=', 'reservations.event_id')
+                                                    ->where("promoter_id","$a")
+                                                    ->get());
+        $promoters = User::where("role_id",2)->get();
+        $revenu = Tarif::join('events','events.id', '=', 'tarifs.event_id')
+                            ->where("promoter_id","$a")
+                            ->sum("price");
+        $categories = EventCategory::all();
+        
+        $events = Event::where([
+            ["title","!=", Null],
+            [function($query) use ($request){
+                if($name = $request->name){
+                    $query->orwhere('title', 'Like', '%'.$name.'%')->get();
+                }
+            }]
+        ])->get();
+        // $events = Event::paginate(8);
+        return view("pages.dashboard.promoter.index", ["events"=>$events, 'revenu'=>$revenu,"promoters"=>$promoters,'categories'=>$categories, 'total_reservation'=>$total_reservation, 'total_events'=>$total_events]);
+        
+    }
+    public function search2(Request $request)
+    {
+        $a = Auth::user()->id;
+        $total_events = count(Event::all());
+        $total_reservation = count(Reservation::all());
+        $reservations = Reservation::all();
+        $revenu = Tarif::join('events','events.id', '=', 'tarifs.event_id')
+                            ->where("promoter_id","$a")
+                            ->sum("price");
+        $tarifs = Tarif::all();
+        $users = User::all();
+        $promoters = User::where("role_id",2)->get();
+        $categories = EventCategory::all();
+        $events = Event::where([
+            ["title","!=", Null],
+            [function($query) use ($request){
+                if($name = $request->name){
+                    $query->orwhere('title', 'Like', '%'.$name.'%')->get();
+                }
+            }]
+        ])->get();
+        return view("pages.dashboard.promoter.type", ["events"=>$events, 'revenu'=>$revenu, "promoters"=>$promoters,'categories'=>$categories, 'total_reservation'=>$total_reservation, 'total_events'=>$total_events, 'reservations'=>$reservations, 'tarifs'=>$tarifs,'users'=>$users]);
+        
+    }
 }
